@@ -1,0 +1,534 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E4A6270A1EC9EAAC00CC9BA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A627091EC9EAAC00CC9BA7 /* AppDelegate.swift */; };
+		E4A6270C1EC9EAAC00CC9BA7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A6270B1EC9EAAC00CC9BA7 /* ViewController.swift */; };
+		E4A6270F1EC9EAAC00CC9BA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4A6270D1EC9EAAC00CC9BA7 /* Main.storyboard */; };
+		E4A627111EC9EAAC00CC9BA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4A627101EC9EAAC00CC9BA7 /* Assets.xcassets */; };
+		E4A627141EC9EAAC00CC9BA7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4A627121EC9EAAC00CC9BA7 /* LaunchScreen.storyboard */; };
+		E4A6271E1ECA0ECC00CC9BA7 /* CollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A6271D1ECA0ECC00CC9BA7 /* CollectionTableViewCell.swift */; };
+		E4A627221ECA0F8B00CC9BA7 /* ProductsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A627211ECA0F8B00CC9BA7 /* ProductsListTableViewCell.swift */; };
+		E4A627241ECA0FD200CC9BA7 /* ProductsLoadMoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A627231ECA0FD200CC9BA7 /* ProductsLoadMoreTableViewCell.swift */; };
+		E4A627261ECA100300CC9BA7 /* CartTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A627251ECA100300CC9BA7 /* CartTableViewCellDelegate.swift */; };
+		E4A627281ECA104F00CC9BA7 /* ShippingMethodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A627271ECA104F00CC9BA7 /* ShippingMethodTableViewCell.swift */; };
+		E4A6272A1ECA107D00CC9BA7 /* TextEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A627291ECA107D00CC9BA7 /* TextEntryTableViewCell.swift */; };
+		E4A6272C1ECA10D100CC9BA7 /* ContinueButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A6272B1ECA10D100CC9BA7 /* ContinueButtonTableViewCell.swift */; };
+		E4A6272E1ECA110000CC9BA7 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A6272D1ECA110000CC9BA7 /* SwitchTableViewCell.swift */; };
+		E4A627301ECA112800CC9BA7 /* DataEntryTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A6272F1ECA112800CC9BA7 /* DataEntryTextField.swift */; };
+		E4A627331ECA11A800CC9BA7 /* AlertDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A627321ECA11A800CC9BA7 /* AlertDialog.swift */; };
+		E4A627351ECA121300CC9BA7 /* StringNumeric.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A627341ECA121300CC9BA7 /* StringNumeric.swift */; };
+		E4A627371ECB449500CC9BA7 /* CollectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A627361ECB449500CC9BA7 /* CollectionsViewController.swift */; };
+		E4A627391ECB458900CC9BA7 /* ProductListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A627381ECB458900CC9BA7 /* ProductListTableViewController.swift */; };
+		E4A6273B1ECB460E00CC9BA7 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A6273A1ECB460E00CC9BA7 /* ProductDetailViewController.swift */; };
+		E4A6273D1ECB466C00CC9BA7 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A6273C1ECB466C00CC9BA7 /* CartViewController.swift */; };
+		E4A6273F1ECB46B500CC9BA7 /* AddressEntryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A6273E1ECB46B500CC9BA7 /* AddressEntryTableViewController.swift */; };
+		E4A627411ECB47E600CC9BA7 /* ShippingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A627401ECB47E600CC9BA7 /* ShippingTableViewController.swift */; };
+		E4A627431ECB484400CC9BA7 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A627421ECB484400CC9BA7 /* PaymentViewController.swift */; };
+		E4A6274B1ECB4A4E00CC9BA7 /* SwiftSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A6274A1ECB4A4E00CC9BA7 /* SwiftSpinner.swift */; };
+		E976C47C1ED7BB7B00C37CE8 /* PhotoStreamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E976C47B1ED7BB7B00C37CE8 /* PhotoStreamViewController.swift */; };
+		E976C47F1ED7BBD400C37CE8 /* UIImage+Decompression.swift in Sources */ = {isa = PBXBuildFile; fileRef = E976C47E1ED7BBD400C37CE8 /* UIImage+Decompression.swift */; };
+		E976C4821ED7BC3600C37CE8 /* FlowerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E976C4811ED7BC3600C37CE8 /* FlowerLayout.swift */; };
+		E976C4851ED7BC7100C37CE8 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E976C4841ED7BC7100C37CE8 /* Photo.swift */; };
+		E976C4871ED7BD0400C37CE8 /* AnnotatedPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E976C4861ED7BD0400C37CE8 /* AnnotatedPhotoCell.swift */; };
+		E976C4891ED7BD4900C37CE8 /* RoundedCornersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E976C4881ED7BD4900C37CE8 /* RoundedCornersView.swift */; };
+		ED9F3BB249B97BCA545CF3B6 /* Pods_FlowerShopping.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 708080E2AB194F31713DADBA /* Pods_FlowerShopping.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1864BE0A8041525B7E05F436 /* Pods-FlowerShopping.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlowerShopping.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlowerShopping/Pods-FlowerShopping.release.xcconfig"; sourceTree = "<group>"; };
+		46446307CADAC905310D7A24 /* Pods-FlowerShopping.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlowerShopping.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlowerShopping/Pods-FlowerShopping.debug.xcconfig"; sourceTree = "<group>"; };
+		708080E2AB194F31713DADBA /* Pods_FlowerShopping.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlowerShopping.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4A627061EC9EAAC00CC9BA7 /* FlowerShopping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlowerShopping.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4A627091EC9EAAC00CC9BA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E4A6270B1EC9EAAC00CC9BA7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E4A6270E1EC9EAAC00CC9BA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E4A627101EC9EAAC00CC9BA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E4A627131EC9EAAC00CC9BA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E4A627151EC9EAAC00CC9BA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E4A6271D1ECA0ECC00CC9BA7 /* CollectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionTableViewCell.swift; sourceTree = "<group>"; };
+		E4A627211ECA0F8B00CC9BA7 /* ProductsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsListTableViewCell.swift; sourceTree = "<group>"; };
+		E4A627231ECA0FD200CC9BA7 /* ProductsLoadMoreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsLoadMoreTableViewCell.swift; sourceTree = "<group>"; };
+		E4A627251ECA100300CC9BA7 /* CartTableViewCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartTableViewCellDelegate.swift; sourceTree = "<group>"; };
+		E4A627271ECA104F00CC9BA7 /* ShippingMethodTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShippingMethodTableViewCell.swift; sourceTree = "<group>"; };
+		E4A627291ECA107D00CC9BA7 /* TextEntryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEntryTableViewCell.swift; sourceTree = "<group>"; };
+		E4A6272B1ECA10D100CC9BA7 /* ContinueButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContinueButtonTableViewCell.swift; sourceTree = "<group>"; };
+		E4A6272D1ECA110000CC9BA7 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
+		E4A6272F1ECA112800CC9BA7 /* DataEntryTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataEntryTextField.swift; sourceTree = "<group>"; };
+		E4A627321ECA11A800CC9BA7 /* AlertDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertDialog.swift; sourceTree = "<group>"; };
+		E4A627341ECA121300CC9BA7 /* StringNumeric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringNumeric.swift; sourceTree = "<group>"; };
+		E4A627361ECB449500CC9BA7 /* CollectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionsViewController.swift; sourceTree = "<group>"; };
+		E4A627381ECB458900CC9BA7 /* ProductListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductListTableViewController.swift; sourceTree = "<group>"; };
+		E4A6273A1ECB460E00CC9BA7 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
+		E4A6273C1ECB466C00CC9BA7 /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		E4A6273E1ECB46B500CC9BA7 /* AddressEntryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressEntryTableViewController.swift; sourceTree = "<group>"; };
+		E4A627401ECB47E600CC9BA7 /* ShippingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShippingTableViewController.swift; sourceTree = "<group>"; };
+		E4A627421ECB484400CC9BA7 /* PaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		E4A6274A1ECB4A4E00CC9BA7 /* SwiftSpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSpinner.swift; sourceTree = "<group>"; };
+		E9168E781ECB05D500B0ECA0 /* Project-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Project-Bridging-Header.h"; sourceTree = "<group>"; };
+		E976C47B1ED7BB7B00C37CE8 /* PhotoStreamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoStreamViewController.swift; sourceTree = "<group>"; };
+		E976C47E1ED7BBD400C37CE8 /* UIImage+Decompression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Decompression.swift"; sourceTree = "<group>"; };
+		E976C4811ED7BC3600C37CE8 /* FlowerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowerLayout.swift; sourceTree = "<group>"; };
+		E976C4841ED7BC7100C37CE8 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		E976C4861ED7BD0400C37CE8 /* AnnotatedPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotatedPhotoCell.swift; sourceTree = "<group>"; };
+		E976C4881ED7BD4900C37CE8 /* RoundedCornersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCornersView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E4A627031EC9EAAC00CC9BA7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED9F3BB249B97BCA545CF3B6 /* Pods_FlowerShopping.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		965D53BF17F203A0E953D4D3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				708080E2AB194F31713DADBA /* Pods_FlowerShopping.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CF637F771F5BEF945642538E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				46446307CADAC905310D7A24 /* Pods-FlowerShopping.debug.xcconfig */,
+				1864BE0A8041525B7E05F436 /* Pods-FlowerShopping.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E4A626FD1EC9EAAC00CC9BA7 = {
+			isa = PBXGroup;
+			children = (
+				E4A627081EC9EAAC00CC9BA7 /* FlowerShopping */,
+				E4A627071EC9EAAC00CC9BA7 /* Products */,
+				CF637F771F5BEF945642538E /* Pods */,
+				965D53BF17F203A0E953D4D3 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		E4A627071EC9EAAC00CC9BA7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E4A627061EC9EAAC00CC9BA7 /* FlowerShopping.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E4A627081EC9EAAC00CC9BA7 /* FlowerShopping */ = {
+			isa = PBXGroup;
+			children = (
+				E976C4831ED7BC5E00C37CE8 /* Model */,
+				E976C4801ED7BBFD00C37CE8 /* Layout */,
+				E976C47D1ED7BBBA00C37CE8 /* Extentions */,
+				E9168E7E1ECD396300B0ECA0 /* Imgage */,
+				E4A627311ECA115900CC9BA7 /* View Controllers */,
+				E4A6271C1ECA0E5400CC9BA7 /* Table View Shell */,
+				E4A627091EC9EAAC00CC9BA7 /* AppDelegate.swift */,
+				E4A6270B1EC9EAAC00CC9BA7 /* ViewController.swift */,
+				E4A6270D1EC9EAAC00CC9BA7 /* Main.storyboard */,
+				E4A627101EC9EAAC00CC9BA7 /* Assets.xcassets */,
+				E4A627121EC9EAAC00CC9BA7 /* LaunchScreen.storyboard */,
+				E4A627151EC9EAAC00CC9BA7 /* Info.plist */,
+				E9168E781ECB05D500B0ECA0 /* Project-Bridging-Header.h */,
+				E4A6274A1ECB4A4E00CC9BA7 /* SwiftSpinner.swift */,
+			);
+			path = FlowerShopping;
+			sourceTree = "<group>";
+		};
+		E4A6271C1ECA0E5400CC9BA7 /* Table View Shell */ = {
+			isa = PBXGroup;
+			children = (
+				E4A6271D1ECA0ECC00CC9BA7 /* CollectionTableViewCell.swift */,
+				E4A627211ECA0F8B00CC9BA7 /* ProductsListTableViewCell.swift */,
+				E4A627231ECA0FD200CC9BA7 /* ProductsLoadMoreTableViewCell.swift */,
+				E4A627251ECA100300CC9BA7 /* CartTableViewCellDelegate.swift */,
+				E4A627271ECA104F00CC9BA7 /* ShippingMethodTableViewCell.swift */,
+				E4A627291ECA107D00CC9BA7 /* TextEntryTableViewCell.swift */,
+				E4A6272B1ECA10D100CC9BA7 /* ContinueButtonTableViewCell.swift */,
+				E4A6272D1ECA110000CC9BA7 /* SwitchTableViewCell.swift */,
+				E4A6272F1ECA112800CC9BA7 /* DataEntryTextField.swift */,
+				E976C4861ED7BD0400C37CE8 /* AnnotatedPhotoCell.swift */,
+			);
+			name = "Table View Shell";
+			sourceTree = "<group>";
+		};
+		E4A627311ECA115900CC9BA7 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E4A627321ECA11A800CC9BA7 /* AlertDialog.swift */,
+				E4A627341ECA121300CC9BA7 /* StringNumeric.swift */,
+				E4A627361ECB449500CC9BA7 /* CollectionsViewController.swift */,
+				E4A627381ECB458900CC9BA7 /* ProductListTableViewController.swift */,
+				E4A6273A1ECB460E00CC9BA7 /* ProductDetailViewController.swift */,
+				E4A6273C1ECB466C00CC9BA7 /* CartViewController.swift */,
+				E4A6273E1ECB46B500CC9BA7 /* AddressEntryTableViewController.swift */,
+				E4A627401ECB47E600CC9BA7 /* ShippingTableViewController.swift */,
+				E4A627421ECB484400CC9BA7 /* PaymentViewController.swift */,
+				E976C47B1ED7BB7B00C37CE8 /* PhotoStreamViewController.swift */,
+				E976C4881ED7BD4900C37CE8 /* RoundedCornersView.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		E9168E7E1ECD396300B0ECA0 /* Imgage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Imgage;
+			sourceTree = "<group>";
+		};
+		E976C47D1ED7BBBA00C37CE8 /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				E976C47E1ED7BBD400C37CE8 /* UIImage+Decompression.swift */,
+			);
+			name = Extentions;
+			sourceTree = "<group>";
+		};
+		E976C4801ED7BBFD00C37CE8 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				E976C4811ED7BC3600C37CE8 /* FlowerLayout.swift */,
+			);
+			name = Layout;
+			sourceTree = "<group>";
+		};
+		E976C4831ED7BC5E00C37CE8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E976C4841ED7BC7100C37CE8 /* Photo.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E4A627051EC9EAAC00CC9BA7 /* FlowerShopping */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E4A627181EC9EAAC00CC9BA7 /* Build configuration list for PBXNativeTarget "FlowerShopping" */;
+			buildPhases = (
+				654814A7E06EEF5442E7C11E /* [CP] Check Pods Manifest.lock */,
+				E4A627021EC9EAAC00CC9BA7 /* Sources */,
+				E4A627031EC9EAAC00CC9BA7 /* Frameworks */,
+				E4A627041EC9EAAC00CC9BA7 /* Resources */,
+				F1D5CD1525E355E360A42F5D /* [CP] Embed Pods Frameworks */,
+				1A592A9A0D2439373BDC2D81 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FlowerShopping;
+			productName = FlowerShopping;
+			productReference = E4A627061EC9EAAC00CC9BA7 /* FlowerShopping.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E4A626FE1EC9EAAC00CC9BA7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = DUONGPHAM;
+				TargetAttributes = {
+					E4A627051EC9EAAC00CC9BA7 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = E4A627011EC9EAAC00CC9BA7 /* Build configuration list for PBXProject "FlowerShopping" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E4A626FD1EC9EAAC00CC9BA7;
+			productRefGroup = E4A627071EC9EAAC00CC9BA7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E4A627051EC9EAAC00CC9BA7 /* FlowerShopping */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E4A627041EC9EAAC00CC9BA7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4A627141EC9EAAC00CC9BA7 /* LaunchScreen.storyboard in Resources */,
+				E4A627111EC9EAAC00CC9BA7 /* Assets.xcassets in Resources */,
+				E4A6270F1EC9EAAC00CC9BA7 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1A592A9A0D2439373BDC2D81 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FlowerShopping/Pods-FlowerShopping-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		654814A7E06EEF5442E7C11E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F1D5CD1525E355E360A42F5D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FlowerShopping/Pods-FlowerShopping-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E4A627021EC9EAAC00CC9BA7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4A627411ECB47E600CC9BA7 /* ShippingTableViewController.swift in Sources */,
+				E4A627371ECB449500CC9BA7 /* CollectionsViewController.swift in Sources */,
+				E4A627331ECA11A800CC9BA7 /* AlertDialog.swift in Sources */,
+				E4A627261ECA100300CC9BA7 /* CartTableViewCellDelegate.swift in Sources */,
+				E4A6272A1ECA107D00CC9BA7 /* TextEntryTableViewCell.swift in Sources */,
+				E4A627241ECA0FD200CC9BA7 /* ProductsLoadMoreTableViewCell.swift in Sources */,
+				E4A627301ECA112800CC9BA7 /* DataEntryTextField.swift in Sources */,
+				E4A627431ECB484400CC9BA7 /* PaymentViewController.swift in Sources */,
+				E4A6270C1EC9EAAC00CC9BA7 /* ViewController.swift in Sources */,
+				E976C4851ED7BC7100C37CE8 /* Photo.swift in Sources */,
+				E4A627281ECA104F00CC9BA7 /* ShippingMethodTableViewCell.swift in Sources */,
+				E4A627391ECB458900CC9BA7 /* ProductListTableViewController.swift in Sources */,
+				E4A6272C1ECA10D100CC9BA7 /* ContinueButtonTableViewCell.swift in Sources */,
+				E4A627221ECA0F8B00CC9BA7 /* ProductsListTableViewCell.swift in Sources */,
+				E4A6272E1ECA110000CC9BA7 /* SwitchTableViewCell.swift in Sources */,
+				E4A6271E1ECA0ECC00CC9BA7 /* CollectionTableViewCell.swift in Sources */,
+				E4A6273D1ECB466C00CC9BA7 /* CartViewController.swift in Sources */,
+				E4A6273B1ECB460E00CC9BA7 /* ProductDetailViewController.swift in Sources */,
+				E976C47C1ED7BB7B00C37CE8 /* PhotoStreamViewController.swift in Sources */,
+				E976C4821ED7BC3600C37CE8 /* FlowerLayout.swift in Sources */,
+				E4A6274B1ECB4A4E00CC9BA7 /* SwiftSpinner.swift in Sources */,
+				E4A6273F1ECB46B500CC9BA7 /* AddressEntryTableViewController.swift in Sources */,
+				E976C47F1ED7BBD400C37CE8 /* UIImage+Decompression.swift in Sources */,
+				E976C4891ED7BD4900C37CE8 /* RoundedCornersView.swift in Sources */,
+				E976C4871ED7BD0400C37CE8 /* AnnotatedPhotoCell.swift in Sources */,
+				E4A627351ECA121300CC9BA7 /* StringNumeric.swift in Sources */,
+				E4A6270A1EC9EAAC00CC9BA7 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E4A6270D1EC9EAAC00CC9BA7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E4A6270E1EC9EAAC00CC9BA7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E4A627121EC9EAAC00CC9BA7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E4A627131EC9EAAC00CC9BA7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E4A627161EC9EAAC00CC9BA7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E4A627171EC9EAAC00CC9BA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E4A627191EC9EAAC00CC9BA7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 46446307CADAC905310D7A24 /* Pods-FlowerShopping.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = FlowerShopping/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = DUONGPHAM.FlowerShopping;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FlowerShopping/Project-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		E4A6271A1EC9EAAC00CC9BA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1864BE0A8041525B7E05F436 /* Pods-FlowerShopping.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = FlowerShopping/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = DUONGPHAM.FlowerShopping;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FlowerShopping/Project-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E4A627011EC9EAAC00CC9BA7 /* Build configuration list for PBXProject "FlowerShopping" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4A627161EC9EAAC00CC9BA7 /* Debug */,
+				E4A627171EC9EAAC00CC9BA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E4A627181EC9EAAC00CC9BA7 /* Build configuration list for PBXNativeTarget "FlowerShopping" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4A627191EC9EAAC00CC9BA7 /* Debug */,
+				E4A6271A1EC9EAAC00CC9BA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E4A626FE1EC9EAAC00CC9BA7 /* Project object */;
+}

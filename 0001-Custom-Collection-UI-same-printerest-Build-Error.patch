@@ -1,0 +1,1488 @@
+From 86181c5b417c869e8285fe1c32b28edb8f1e8d22 Mon Sep 17 00:00:00 2001
+From: phamvanduong <phamvanduongit@gmail.com>
+Date: Thu, 25 May 2017 10:13:59 -0700
+Subject: [PATCH] Custom Collection UI same printerest (Build Error) Note: How
+ to design struct to resize the image for get from Moltin
+
+---
+ .../FlowerShopping.xcodeproj/project.pbxproj       |  48 +++++
+ .../UserInterfaceState.xcuserstate                 | Bin 25705 -> 30283 bytes
+ .../FlowerShopping/AnnotatedPhotoCell.swift        |  60 +++++++
+ .../FlowerShopping/Base.lproj/Main.storyboard      | 137 ++++++++++++--
+ FlowerShopping/FlowerShopping/FlowerLayout.swift   | 197 +++++++++++++++++++++
+ FlowerShopping/FlowerShopping/Photo.swift          |  50 ++++++
+ .../FlowerShopping/PhotoStreamViewController.swift | 157 ++++++++++++++++
+ .../FlowerShopping/RoundedCornersView.swift        |  21 +++
+ .../FlowerShopping/UIImage+Decompression.swift     |  21 +++
+ 9 files changed, 676 insertions(+), 15 deletions(-)
+ create mode 100644 FlowerShopping/FlowerShopping/AnnotatedPhotoCell.swift
+ create mode 100644 FlowerShopping/FlowerShopping/FlowerLayout.swift
+ create mode 100644 FlowerShopping/FlowerShopping/Photo.swift
+ create mode 100644 FlowerShopping/FlowerShopping/PhotoStreamViewController.swift
+ create mode 100644 FlowerShopping/FlowerShopping/RoundedCornersView.swift
+ create mode 100644 FlowerShopping/FlowerShopping/UIImage+Decompression.swift
+
+diff --git a/FlowerShopping/FlowerShopping.xcodeproj/project.pbxproj b/FlowerShopping/FlowerShopping.xcodeproj/project.pbxproj
+index 6716ba9..7f4e7f6 100644
+--- a/FlowerShopping/FlowerShopping.xcodeproj/project.pbxproj
++++ b/FlowerShopping/FlowerShopping.xcodeproj/project.pbxproj
+@@ -7,6 +7,12 @@
+ 	objects = {
+ 
+ /* Begin PBXBuildFile section */
++		E47895971ED72588000F70AE /* UIImage+Decompression.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47895961ED72588000F70AE /* UIImage+Decompression.swift */; };
++		E478959A1ED7264D000F70AE /* FlowerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47895991ED7264D000F70AE /* FlowerLayout.swift */; };
++		E478959D1ED72875000F70AE /* AnnotatedPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E478959C1ED72875000F70AE /* AnnotatedPhotoCell.swift */; };
++		E478959F1ED728B7000F70AE /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E478959E1ED728B7000F70AE /* Photo.swift */; };
++		E47895A11ED7297E000F70AE /* RoundedCornersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47895A01ED7297E000F70AE /* RoundedCornersView.swift */; };
++		E47895A31ED73216000F70AE /* PhotoStreamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47895A21ED73216000F70AE /* PhotoStreamViewController.swift */; };
+ 		E4A6270A1EC9EAAC00CC9BA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A627091EC9EAAC00CC9BA7 /* AppDelegate.swift */; };
+ 		E4A6270C1EC9EAAC00CC9BA7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A6270B1EC9EAAC00CC9BA7 /* ViewController.swift */; };
+ 		E4A6270F1EC9EAAC00CC9BA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4A6270D1EC9EAAC00CC9BA7 /* Main.storyboard */; };
+@@ -38,6 +44,12 @@
+ 		1864BE0A8041525B7E05F436 /* Pods-FlowerShopping.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlowerShopping.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlowerShopping/Pods-FlowerShopping.release.xcconfig"; sourceTree = "<group>"; };
+ 		46446307CADAC905310D7A24 /* Pods-FlowerShopping.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlowerShopping.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlowerShopping/Pods-FlowerShopping.debug.xcconfig"; sourceTree = "<group>"; };
+ 		708080E2AB194F31713DADBA /* Pods_FlowerShopping.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlowerShopping.framework; sourceTree = BUILT_PRODUCTS_DIR; };
++		E47895961ED72588000F70AE /* UIImage+Decompression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Decompression.swift"; sourceTree = "<group>"; };
++		E47895991ED7264D000F70AE /* FlowerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowerLayout.swift; sourceTree = "<group>"; };
++		E478959C1ED72875000F70AE /* AnnotatedPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotatedPhotoCell.swift; sourceTree = "<group>"; };
++		E478959E1ED728B7000F70AE /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
++		E47895A01ED7297E000F70AE /* RoundedCornersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCornersView.swift; sourceTree = "<group>"; };
++		E47895A21ED73216000F70AE /* PhotoStreamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoStreamViewController.swift; sourceTree = "<group>"; };
+ 		E4A627061EC9EAAC00CC9BA7 /* FlowerShopping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlowerShopping.app; sourceTree = BUILT_PRODUCTS_DIR; };
+ 		E4A627091EC9EAAC00CC9BA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+ 		E4A6270B1EC9EAAC00CC9BA7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+@@ -96,6 +108,30 @@
+ 			name = Pods;
+ 			sourceTree = "<group>";
+ 		};
++		E47895951ED72513000F70AE /* Extentions */ = {
++			isa = PBXGroup;
++			children = (
++				E47895961ED72588000F70AE /* UIImage+Decompression.swift */,
++			);
++			name = Extentions;
++			sourceTree = "<group>";
++		};
++		E47895981ED72607000F70AE /* FlowerLayout */ = {
++			isa = PBXGroup;
++			children = (
++				E47895991ED7264D000F70AE /* FlowerLayout.swift */,
++			);
++			name = FlowerLayout;
++			sourceTree = "<group>";
++		};
++		E478959B1ED72786000F70AE /* Model */ = {
++			isa = PBXGroup;
++			children = (
++				E478959E1ED728B7000F70AE /* Photo.swift */,
++			);
++			name = Model;
++			sourceTree = "<group>";
++		};
+ 		E4A626FD1EC9EAAC00CC9BA7 = {
+ 			isa = PBXGroup;
+ 			children = (
+@@ -117,6 +153,9 @@
+ 		E4A627081EC9EAAC00CC9BA7 /* FlowerShopping */ = {
+ 			isa = PBXGroup;
+ 			children = (
++				E478959B1ED72786000F70AE /* Model */,
++				E47895981ED72607000F70AE /* FlowerLayout */,
++				E47895951ED72513000F70AE /* Extentions */,
+ 				E4A627311ECA115900CC9BA7 /* View Controllers */,
+ 				E4A6271C1ECA0E5400CC9BA7 /* Table View Shell */,
+ 				E4A627091EC9EAAC00CC9BA7 /* AppDelegate.swift */,
+@@ -143,6 +182,7 @@
+ 				E4A6272B1ECA10D100CC9BA7 /* ContinueButtonTableViewCell.swift */,
+ 				E4A6272D1ECA110000CC9BA7 /* SwitchTableViewCell.swift */,
+ 				E4A6272F1ECA112800CC9BA7 /* DataEntryTextField.swift */,
++				E478959C1ED72875000F70AE /* AnnotatedPhotoCell.swift */,
+ 			);
+ 			name = "Table View Shell";
+ 			sourceTree = "<group>";
+@@ -159,6 +199,8 @@
+ 				E4A6273E1ECB46B500CC9BA7 /* AddressEntryTableViewController.swift */,
+ 				E4A627401ECB47E600CC9BA7 /* ShippingTableViewController.swift */,
+ 				E4A627421ECB484400CC9BA7 /* PaymentViewController.swift */,
++				E47895A01ED7297E000F70AE /* RoundedCornersView.swift */,
++				E47895A21ED73216000F70AE /* PhotoStreamViewController.swift */,
+ 			);
+ 			name = "View Controllers";
+ 			sourceTree = "<group>";
+@@ -295,6 +337,9 @@
+ 				E4A627301ECA112800CC9BA7 /* DataEntryTextField.swift in Sources */,
+ 				E4A627431ECB484400CC9BA7 /* PaymentViewController.swift in Sources */,
+ 				E4A6270C1EC9EAAC00CC9BA7 /* ViewController.swift in Sources */,
++				E47895A31ED73216000F70AE /* PhotoStreamViewController.swift in Sources */,
++				E478959F1ED728B7000F70AE /* Photo.swift in Sources */,
++				E478959A1ED7264D000F70AE /* FlowerLayout.swift in Sources */,
+ 				E4A627281ECA104F00CC9BA7 /* ShippingMethodTableViewCell.swift in Sources */,
+ 				E4A627391ECB458900CC9BA7 /* ProductListTableViewController.swift in Sources */,
+ 				E4A6272C1ECA10D100CC9BA7 /* ContinueButtonTableViewCell.swift in Sources */,
+@@ -304,7 +349,10 @@
+ 				E4A6273D1ECB466C00CC9BA7 /* CartViewController.swift in Sources */,
+ 				E4A6273B1ECB460E00CC9BA7 /* ProductDetailViewController.swift in Sources */,
+ 				E4A6274B1ECB4A4E00CC9BA7 /* SwiftSpinner.swift in Sources */,
++				E478959D1ED72875000F70AE /* AnnotatedPhotoCell.swift in Sources */,
++				E47895A11ED7297E000F70AE /* RoundedCornersView.swift in Sources */,
+ 				E4A6273F1ECB46B500CC9BA7 /* AddressEntryTableViewController.swift in Sources */,
++				E47895971ED72588000F70AE /* UIImage+Decompression.swift in Sources */,
+ 				E4A627351ECA121300CC9BA7 /* StringNumeric.swift in Sources */,
+ 				E4A6270A1EC9EAAC00CC9BA7 /* AppDelegate.swift in Sources */,
+ 			);
+diff --git a/FlowerShopping/FlowerShopping.xcworkspace/xcuserdata/pduong.xcuserdatad/UserInterfaceState.xcuserstate b/FlowerShopping/FlowerShopping.xcworkspace/xcuserdata/pduong.xcuserdatad/UserInterfaceState.xcuserstate
+index 53d5614de8e315724ff7744ef78d8fd21424d642..2d22e1598aaf54567c24800cd6a894dba3858e6d 100644
+GIT binary patch
+literal 30283
+zcmd6P2YeL8_xR4<woBs@dcWjSF8x}Py8!9!NOI{Na=9c21d?1x0YY;Jl_sD9QWZ%+
+zKtMzk#Rj4v2v!gfE23f-5WArNx4XF%i0%Ky@As#CAlaRLecrrz^WIc8)YddLYcy{X
+zh#(0WK@l{;$QR4+DE6IZZ)~b@)EE0YDks~knwv^|ZH-lvYT$9cZ?mJpi$L=?KI}=J
+zB3ObW`V#$!{zM=VL<AEdL?{tPgcBM<OX!Hv#26xmh$WJVbRvVuCCUjaQ9;;<N@5aG
+zL(~(~i0Q-(qLr9Q%pq<k<`WBuJBVe(ox}=aJ#jB_AMpUOh1g1LBOWAn5xa@U5Q!MX
+zB3I;w6vz|xM+49hG!%_QO5}_DP#_9IVJIBwkpUTz35`K9C;=s+RFsA?P$tSjxu_5o
+zp)xcMRUjL(qX}p-nt~jt0X3r*)QV=Jx#$*jE4mFWM2pZ;v<xjrE6{4R2HlJ9Lv5%X
+zZ9!Yn4zv^PMvtJq=yCKEdKw);N6|~@7&?w#Mz5e((QD`(^e%c2y^lUX=g^1fJo*M*
+zM3>NI^ewuAzC+)Wh$KlFNs$WDlk_6{k|Rka=}r2OVPrU|A+_WfGKP#L<H&e2flMTm
+z$ZRr)%q7c7D_KF-l67P~=^$s3v&lK+Tyima2f2h?O0Ff>k?YBO$!+9=<aY9L@(FSu
+z`6PLme33jt9wpx-Pm!m|Gvr6)$K)sE1@c?+3i%!Ry$s1nnM_8>6f#elm#nXBq)aLE
+zmifrSWZ^Q6Y_x2QEJhY9OP6KHGG!K7sjN&kPBvavBbzLnBCD0nkhRKY%4W$H$QH^L
+z$rj62$yUqO$kxgpkZqA|l|3qZOtx2cQ1-m+1=%6l>#{dwCuHx-K9HT0eI@%^_KobK
+z>_^$Jva1w9A<CWdp!!e>%9H9(4WI^6!>JL}NGhDtP+Cey=_vyhK}AwgR5F!9rBZ2>
+znHo!_QyEkyWudaDY$~5BplnnnRYg@(cB+P&Of^tbsYYrZbt`onbvremT0kwN7Ez0-
+zb<}$5Ug|z-19d;Ok!qvbsZG>o>H%sCwVm2QJwolF9;J>@N2!;nW7Ki#W$G2`Rq8eB
+zb?Oc31a*>nllqwYjQX7Vn)-(NmbyayNc}_;G@?mbMpLvK?M{2pedvMoNIHO4(;8Y!
+zkD^D@W9S$<h0dmP=v+FF&Zi6LLb`&s(Uo)+T}Ri`4!VJ!NzbBZ(>#3}y^_9%UPZ5_
+z*U)R}`{<2y8{JNCqPNnI(fjBp>1XNv^z-x!^bz_f{WARu{RVx4{+RxRzCeFUe@1^!
+ze?fmqe??znI7ZI6Fs_Un<IZ?6eHaDf$#^k+nSRU=W+<a%)Jz}~!~`=TjDd+@;+X^{
+zkx62bnF6MeDPoG55~h?XV{A+%Gntvf)H2OX3p0(G&n#dTGK-kS%pJ@UW;wHl*}!aO
+zwlh1JN0`0LVdh2V2y>Kqi8;o+$(&+NGiR80nfI9Yne)s?%*V_p%mtQU5lgZ%mSSm^
+zVOf@A<*W<q%DS<ASTD9eJBS_1s#ssvj}2zEtci_gN3n@)5}V9svKBUrEn<t=5_T%v
+z$TqRfYzsS$ozBi+TiKcHEcO=mc6L6ygk8$6X4kN5*>&s&b~pP7yN7+0eT?19KF&VD
+z?qd(JhuIg|BkUXO3HB`e0s9gADf=aRk-fxz$9~WL%wA)EV}Ivl9LsT>f*Zmqxd1Mh
+z3+MD)6ldf{bMag<XXY}wJT9Lr;cQ$bSH(@?YPmYDg`37r=Vov`hq*hrCEQYO8MmC<
+z%ss$u;kI(yxCgoI+zxIhw~u?0JHQ>{j&aAiH@FkrN$ySVE$%G$HunzqE_aUmnEQmg
+z$X$`sa!<LJysvz)Tq*aJ`^f|4LGm!UPOg_n$&K>S@;G_CJX3CwXUVhWIr8!Ha=BGr
+zA-Bn^<&)(O`E>aVd8-`D=gDuCFDme@Z>g<4NyrHo!j*6%`Vd}4mb|bj_SU9S__xE)
+z7y4G!+M1f$33tMSCwW;rp&&eY3Zv(Fl~vKtoRnPTXq?j2V5_nxIjUOf?Dfr7g>PiC
+zHqwxgs0&Tf#V3av5))0K36V+qP@OS3S#L;4h);|(I57_(MiT06#6V&YF_;)a3?+sU
+z!-)|*%`-g9bG)2);az#RZG@8WCVU7L;Y;`t{zL%p&U;`q5u?c%&A{j`j2^>iFRuoo
+z5*qEcDGiRA`sSwis^*$$wq|>^RWT&VKEc*f+niio)9h%>Ylf#yDUQa1+>EAi;xKz&
+z)g*hJ9RNtb=C;%)*_)bc>TS)i@>vzbdjLpjwAI=3YG&FyU|1EJ3|mukqNA>%)(!}>
+zg$1*z8RQ{>O|UiDt3|*y&8@li21g?Zs*h7<MK$%+j_FNS#h_e!6?`KR>3l2DD0j+B
+zPec*wO@x7nAR_rbyn^@KL>LJZ5zTw?kr<5-L=aV6<*2rYiGS;}8y&)uo!8PJAPwsY
+zy5|_H!e9Cl^qO9C!`M7WOJkKi5kPmM=oo0OZ?-p103%3fsj02DH(rk=4@BNt>993c
+zJK2aM5(sr05zqH+BNF)my!s@O0(O{6q!DIftYC?iAh9y|x6xh;8klD13BEty&#EY&
+zP*ZD<4i676XaX6BH&nMc>L-RfWz`g(lx2;#SQ87f%+~ah@TN(QhK3p#kW%ZIZg0%%
+z{nxM=g1{O;QsF0vOu|BB5!t1Z>DPmvi=`j!O$C-bP)0kv&MCI!Wr?wnlcPMMm{4yf
+z@`(bXkSO8@@`L!n{E*E=2~kRv5##uwd>|jhM+o{+_t1=_k+3FFx*1?JVNDQ-HBYOt
+zPq!*UdKsGCXrET&Xlcr~HBPj5*h-=>O?w}nXRihQ+pC=-%5YSPCJn<SbvsQ&BE%|T
+z><-+?VijQ*lvd3TYa=G`!v$76lM3_m1ab?3TywL%uIYs6P$m;~?ZgzKmLI|U@&Qf&
+z4x*9pY9|_qsr*P@*-kVO&Ad17!>h&v7;`mPe$9j$d!tpMfZqj(nYM}bHO(!8#d&uL
+zs0YHX&s1^tI70YO(%~#(_BcykQVsY3N4>4FwVjwn<TxprOW+=q%p-2){dj*~m92_f
+zVdw^BA+f03l9$=iY^$ub$2T_GS~n33iN!<?*r@ocglq}1)T-#)Ij{@sCSr+z*Q)Tk
+zQLd7x?jn}A5qI;!yx~n^C2<e23g*FTVhypDSXa^{>JI2HX|AaQZ)B@$D68&pv|x#R
+z7$3@q@cMs!R;c3lAJ54=K4P3xejA83LfuZ>Pi*AFc}+XfPHf_}ypC5FN>)@T*-x)*
+zm-n2Dk^r|8JHW^Gu=eW>b`!Cact{ZCpAQ2)fc0Gev4mwY@o>AKJSQ8E5PJyq#*Kpe
+zkru+e#5;ugVTB*@IPnCrk9d-Jig=oMhIp3PPaGhgBMuVJ6E6^lh{ME-#1Y~s@e*;2
+zI8MAwyh6N6yhglEyaBd%l6aFiMVuzi5N{D@iMRPE-o%gM$MCUyJfFxX^QpX<Pv<lF
+zEIx<N;|usAzJxF1$MaU+##ixnej;DPPvPr$2S1f>;#>IXd@DbTpTplGko7L{9`Qc$
+z0dbD_kT_3#M0`wqLR=s|B|alQC%z!QB)%fPCcYsq5|@a}#J9v1;ydDd;s@eK;wR!~
+z;uqpq;wo{C_>K4-5j^G>^UL{l{06?A-@<R__wal9ef%^0bNnIxD1V%PjX%ks;ospu
+z;6LI&<-g>=;lJg7;D6zN!-&L)!N>(8cZ?Jm^}}c&Mnih|a72s#+Gtf&^zN_iO;cdw
+z_&5D?c)oo`b8>xiV{5)J4F%7TXs@jeYnom&p}E`2fm}qa(N+cck=|B`e}*-_y1LQc
+z)N~zU2hicDt%X(Y2K0SI^rNkcNjC#MtlZTtRn5YZ(8czjVDBelkFhGOHv@Zt*<5Fv
+zXb(=ZS3yuC$N}8YjVuoqk;YjS_M3q;Z&Ho8TxZ&wCpoISxb9WiBSh2*Rz<<hKphVn
+zZBDAO)jB5L$fZg|m2{K1>`-iyz1db%D;o2kXjLtuPO&O#d*`xaHTeGve8LlLjpEXs
+z_$L&EiWH<-72|rR;Ga#ZTt`cNwY@sg(O3`ho51~z;?{{6$Nu3w`p<a&D~U&m*fVYt
+zze%=co8&>jho#imYpZYMceIGnVpYuOUBdqvzyH*a#EaBqTNN$;1~twp-Zi=Z#Pm``
+zQgW?|)_;SPf9&7WMRM|Qmd9ymNP_roB5Xx(G>L2xRpCuC!ua}nhp^?X&Yt9GcJ#h>
+z7Kj*&t%}0lW&O{lxfJ7N*jgPeu%Wqroh}t|m0A^5Hv?CqupEnFzUWW>%$He3#N%!j
+zV(^|_b_|QuAM3MPL|lH85O+-Jrk=4uud8H@h`8bpm#+WJx5WRM4cCjPE3Jz0H$%&L
+z(`%ZmCiM{ajfT}EqJ(_Uzv{dGR(LW)BxS<Cv~d5OWo3>?!6d69qj&lLL)B+Hss%XR
+z<L!AOhRIgNgqwn)=f*G`G(Mp@57IXfDcq>)1tRWRt77WEfxFA6{Ds9W5y^lAq2u2m
+zBiq(0Bvt<^WVu@;qQR=L^-jb;^WA@&_f;ZV$k*HyH!iMCdCic%t@|r}*NccDg_?CU
+z_!SY~XkZ&fB-5;l;+uiwuUL9O#5TjKXzCr?Kb)-BO{FfC{^b(6T_j|tRZ-MCA^*&l
+zK%bC)wZPFpV@=hKGJaS@Hv3=l*Z*jv^_WP?T&rT@&EUIpg?8AgGaZfgzwjbYipcpt
+zT&4e+(1i%7roIKz@y*SS`d(3s=`QpPItWQ?^eozs4xs1wdHk*XZT#(<(evm9bO;^h
+z=kp8rh5RBR(>o};v8E2vsLsS%zB3^S2R_%mDy(U$fiz9xBwM2mGS7{<w)%<o@o6>H
+z_W0Ubb5m1`9dgfp*L~znQ}_G|5|76eZ!DYFR5D8wqSWg2k#o3`Svs8|L}}2?>B!ol
+z*U>3~jW^H<bP~PE-@z~8m-5RtqtoaNuyK~ZlfMhtxch&~#_P-U54Q!6pQY7mBlN(E
+z!4NU06n--rB14p#PF6lbp9!pdj6OjZ(5L(gekFeoziKo39DM<-e8sQk*8nSP|EH{+
+zNw9otSTk;x9(V~+f-)lKl+7||HAY}7%GAlq59rrkS-Fa?0V}`r>-l?umHT)#DEUlM
+z?up4>#e$LzM$Mc;;fGG4kTmJio0*cXq#HU!dhqx28v#<A2<eyt{}5plAw_8QAYz>^
+z0*Evkoph1?$iclr8$u2RXv6tU{APgmfCSBJ=GrA2MQBlxhB?Kvq9Q?gU6iRvb#FY9
+zfn*TC3gNf%+W^*s5|1gv7k)pwY*s`RFsB1Em{T%KYt(=#cfr$<aJ;vf)RP7>f{f&M
+z@H_d3_+6VxBWVJ7qxgsU-2m^A|Ec<qk6rIl)*?;FD4j{*LMO1)#YHkXwpXd7lNqAs
+zALSndE;=+HAMoPGcS@SqM06@Cj}(s6ZWKfbSt^2foPVMd#PQ4@cP|W=RIZ8Y1Ysj5
+z2vl6}+{lUKB#`A~{z?8R0P(b>XU}c>?<ORkwAv_8v?&tIxr?O+vZYsgrjgSDSS$Z5
+zzaM}d5P==f3O+b$nNvU-K|oql4>jLH-qtI$+sXL=Z6SY<e;%N{AVJH_Nsp}_H%l8S
+z_zhh|gi$c+C~>xR$!i(8qF0D3$$J3eYW^_)B0xMMLCm{D)9*#W6-8)tFlY6WD}ssA
+zgXR0k_Fm<;iQFuz;3fVTfRwa&%+0!K%z2Szoi@tQse>KlZUM&i?u>kd+yi7i#=p$J
+z0x(_`$vTtzfnj!T2MoO)bYL{}FsrA?1HA%!jywp!Uf^Hn-vD4IBw#7OT_{WF00v7%
+zu{7<v6#5eRYOlavBVPw#C-^t{QvmF=1Z;Fx@!SJtvy72ZpaG4+04mjMv^`Y%7WrPU
+z(t4l#0N{Pdzr~*gcyEjFjw$kgFs&#98xzDI6{!P_Mn=Ippo{7<-%rV}dL{5{@*4nn
+ziGP=W4*<R|5ttBp^er#R;tV>0yhsxmi=opQlRuDxGrn;?T_wR8lfU!l_zwZvc@f(2
+zyqU{?N-LdZ0B*H9n3Tn{^t$evkkPVU9kR?-1`b)~!GFwu0?;l<%zCOX-Jus}rzt`s
+z%&dqWu=>dacYFh7vLP~X$Fkx4XZ+^?>kEmp%*u#;?@BWroI5C0+ua?@R5HOG-v}#E
+z2JRS^oUiz=0hVO4$8%;z<js_1rs*<SnN}9rD~u?a5$K8LFY=cF#$}0~Q8T#P_lWdp
+zjRHOJcQ>ygi<2ey3M)mH3b4%l75+Pb^}PfutF*10mFS6z(9J2DWrT&R(_m#;vix3Q
+z703z!Rx$r0{}aIaS%MY4bgOBw1WT`xJWzzGJG63HRj<&hWp;ozk^hyy3ec`e&@7*Q
+z@ms6}%_y2fl&O2rBCC@%0<arqxvWXn48W%GzhgLXT!;}8!JQd(>A|-rcM%8kJhBJ4
+z*)rTKxOuW$0o?5v$uOb>c(epBWyI5|_dqzJ(|}>=^m<`oHAF^&^g8{c><-yoy~4a(
+zwj5xt#E8X+6JW|En5iF=<I5x(BMgGa)kcE+3@}wYf=<~w+5G~<>z5bVMp>I+YZ$p=
+z<OVWyI>^cwCk0=>M#;9x9s(dY8tg9F!x9jva_Z9w<hbQT<nMQauYj;iYwYqBvd3jl
+z_e#q%vS)$20~mQ?<Rx&|SLE(k->~!XR*4vJW-yHm-F=ztu<Tf`R2`SSEK$`TqXAu1
+zWknwTIiSltoB}#2d#hKX&dT1FpbWxja3_>w3fcZEV>+gGrx%ocD7(-rkWXcw0cT%e
+zG!&y@0%yY|&OA}hb4Y?>61~0&Tx{1Qx+J>-bqlh~vTrdOiII1^>^s@_7^yHy?s0xC
+z`$gE0VWhMw>U-Y~{%8Afp&l%(wn3;k%CyzMxoWoxsm?+u+3yk&K7Ux>@z1t}e}+`t
+z4^kw>g0v|aMNu>bXZ*ex`C;UbQNU)3qvVte1xBsLC<voqjKYL4bg*;dmT9l6v^RE@
+z<G>!zQ+fvn$FLoq2Kzrq6{*Y#UFBeq9e@+=mPYAFzw;o-su*BSNVL^Yvt5_15G!UV
+zFQ}NI`eGEw8%nE7>q8@wLoKOrUNz91kk!&$TT_1>xDJD)22n$xeu)~4QAisFb`vVn
+zFVyX&*E^=ycl)-ern-5ODz4$2SPA6(UP%QI>MfKv<wL0`U&@aH!GvR^!AOgd4kJBA
+zhAotu3Z#OlU@8P1!YBeGsLG4NC=sJ1uyu85sl!p10^4FoV_70(_Uw(>La8DUFBHz$
+ztMeTV8TM)R+74+ZffRkELNjwxzN3>?NjTY#rW&ETDboh2zk$Nb_*#GnC5!ehG(t5M
+z6pTS}o~^NCXReC9Fk?#Xlht2a6#)=R>P%reqb5qHGn%wIo#0#|A|k`I8dId+7!hI6
+z>!Kp(NRl@a%Xd&FDw-Naji$y>F;pxSN5xYK6tHK+$b?ZeMx!tqjnNp4VlaxuC=R1|
+zj1oXs#m(`dsk+d-dShu)X;o-VVQ9+~V`+STRcOPMQ2V5rrPHe;LuXWlW=?4>%_+<a
+zZLox<7;L5bs0pEt#?X34Woc!0Q|Kg1s4jIvY0iv@(8^)}HoY`0*&aHrHZ(8WUfNR7
+z5;`_Lv@WNxG~Yfov^g=fATimgzZ@!8s`gREzAh>jYIP*LFQm!@yDy@OsS>IbqZEu%
+zF-pV8yqOwDl~U!D6{E56D@GX@W&Mxreu7~4Q1hA&vg~5i$-@+?PO$D;j56D(dW<Z8
+zW!-gr59@BCW(wBbOtnzcsOi)UsuiPbjB+r_#V8M>e2faVP_wAn)EsIqb&Fu#g%}lK
+zRE&`wqY3|qtot)byH-UY>~ZwEu*h!zK~xZ`*BE*}({<SQ9mMj7s3p`yY8iDWbr*Fv
+zwVYZ(t)%XuR#B^|H5iqE@G$}dDZ^+SM&mIm#|TWL0wWtnl^9iFR1MncW|7_Ow40@O
+zn+jRE1)&-Bp>;D1-Oan(ROn{^-KNci%&DQ7V?*nU6S~ip8;yP|wasbt=OnQ>4Q3~`
+zi|}fr9>Qo+8}%?oHBg5M1-%xbvRTa9URS8+{O&R8S;A`@wU>IFdV<<VJxM)9Jxx7>
+z(G-lp`06kM<8xrtfYDTp8n;pV2_-s29i*P8UZ4&UN{pJIdK*^kW{g@enugJI_+3@f
+zES9t8C8d|vG$q&8OcYXxun<U(B@bq9Dyo5cV5micGVSg!oHeabZzw&E7uu7W;ZPXX
+zmd=L~kQ7^8O>L`H(Z4%@OsM~@l}ekh!w9+5szxa3hO)w%hDnZkds9ta3zQ@~8nv1*
+zomCN2J*~M~^sk}Uy^l^w)JG;7VRh1L<MpA2$cV^LW0FP_nvj$dX*5I_;*+Bi3uhQ3
+zt&xVp8aRZgx0gu&m_l?;VV|Pjg;`1Lqs~xoQD>>Qi6cDtSD2c!Fq(tWEquuq>OJax
+z>I3Q=^&xd0BaG2}j22^b2S!UUTGk`1p+1!&3drvNpQxyyzLMyH1AsrMAN$Y3tUo)R
+zrY=jkA>;qA92WnR!w2dIi555j`0pI0Nz2~P)K#d0rhcJ*#b_Qzx3*K)D5&qe4Wrw6
+zRl#&22r8UpubDWhSrxZPavrL<`3mu;4g;lWngbX#L&FAY0Y(b}2JIrkSabu71($k!
+zs-XM+@uyDsgXp1uJxEEbu4jaXz!ex-%Bxgyw^#JQ8%T%TFgi>eeWx&b{&PJ>>uAUa
+zY@+qFfre=AZj6>=v|<w-MH^{|cVOqZ2ct)YwN?YpvuBG(M>_~aXn8Gl!r_VJSM%%>
+zg+pC%VuNn@B&$IP=-}0W8(!ttG}qe2IE;=Z>K>ru=y*DTPNb7Cx(B0sG1`dHW{e)}
+zthc9A>2!hgG}=r<@UjY{)flbWL}$>Mv<0KJ7_Gx-y+FGE4aj;>3P&}LMrd5IDuVxf
+zV1lh`N}jy|&V9f?!t(p)qa_@Lw%QiEDvlF{PE-*}Kax=PzVy&VG{k8)GBl1JPs2id
+zA4VH6x*s-zaS|{hM_C}Yq&SVKnx53#_cion8dk41jM_2UBz!N~IFTFuN0dyZAs>7r
+zCDZ8X^bCw1z-S9bTLDt6Wb#hFPSA4*S9&gei_qdy4W)ruo@7O(v+)*@GKywKjsANL
+zw-2#gAH|TN!+iaMwT7sUhAz2_tDCzAbf<I(S882>Mu_-kSko(8pzR47x!ibJVG0zV
+z+N)1`db#u+Fu0fAul9cZd5Wjo2M&T>EIIF5Xvs@~9U6>;!(>O}o5M$pbWwWysNlKK
+z2n8r7q}19bHo@;g2%(Demz3b?t`J(ez@o#z9oO3PTA?qhuD~n+OK{XypYRV*2lm!&
+z(}A#E9n{rq6B6nY7OsIloZQp|U`nJUPiQ|&(JD1c4WU513joyVon*G_g5dXv$eyhr
+z5yC^G2_l1Tf~l57)*c<y>vQPWvgD=PTcMAuqxboZF){g#4o5SOpzGNay4O@hD0DeT
+ziT%yF(DhSEIEbmx<<dgTCT@jZ=2gU6=w!Z+*a-a+o1vHaA!08y7957=fm2Y`{~^@#
+ze?t6*WXJ;zL?e(l^e<~s6iPzr(5;+>@}W=JimK66=uU2hUgW!>`*<Jp8$Tz>nMBgR
+z&|lr-KlD6C+r;(<8q@Q}clD@%^=*Pjw-PxZX`!CTIZJM*mq5$`ZeszxkRD4frXiF7
+z=dm559pFDO+KJIaTfmDfqwl2eg1?uEzGN3h5JWzL5&W=Aa4J53KKt`q8z89qi$OpZ
+z3<~&jNW!4J=2jtG{ELyop|v<tflkotU?#4o?-fj6=&lh?AtOE;V1amew<N9&^!<`#
+z?Ctahq47kK@2Ix5Ds9b5V{}A>GCtFjoIEZ*#bR%s4sDQ7=OB6K%|u-r^h?V40O|K_
+zMBR4!L3%s!BE6G%hTcW&qj%Gf5Jxb29HV_aY@wdwVFUe)5ZUd=a1LK0xbV(25dDM{
+z96a%_mb=i;NLZfy@0Fa=2PKqG|F@!^E|I<{VSe_%+AKjIm#`kVS^P>3B7dU_lzv^p
+zeDEeI_m7MC#lVt2Nxws=x6*IYr|8r48Tu{yEd4e{FJK{Qa2TT(F#_X1iqT73>38Y(
+z==TW^`ZS>w_J+qWI*!rHybK1yw$Pndm&4?j8f3+$Tj&IY2U(4fOte>bb{|8HOIO)1
+zL{BloN6yyd9xtu>D6L88Kn~R=B%5GY7M~JojMo}N^?Geovc{B{5^pd-CuMg468bI#
+z1@$#kTkKt_POD-h3>RZR`yXIc3>E;2eZKh)M{T98(G0mwu}($`13TW?Dj`kR?bU!;
+zLMa54M1&}3X-&c@oC)&&Qo4fv8WKYEX+cuXerozMeU(ser@y7I(BIMD(?8HZ(m&BZ
+z)4$LV;=h8?s~Ek8(d!t!fzb(!PGa;XMyD`3y`8>BDCyrBf<X+)$QX)HG7Ls%cz2B6
+z!sskUA7L^GlcAV2!ZRpE01rPP9=d{{E794p+$7a|gQEmyq1Sf0#Wt-5>f0gL2@gOG
+z8MaD0RBVO{vglPi1<f_kOxhX`MSz`Mo)WlDP{KRdj6;GHnu=2!Z4Hx>?3FDOCkn~s
+z9$M?6cIf4<nONTg?l_?&uj^YU%@PSU_9h`2B6TwgpDBp49(97Ep)>uNfsk}#24M7d
+z8#4%_cLcHgK~pR<44Pt@;min(-o@y{&M=+vW_)2k!uT*MjNZfO{dUHW@yF-`jL!Xy
+z)>!CRy{*T-iV0;jH^9@0@XibSoBEAne9*DlGm*?F$bB+VjFB-h(HMP<(I*&P!06M>
+z%xGo|6T?6f_cKf~m>h`7K>~wHu}?D$<Ri3+cWNdK0w^h+Z&eKYgCU~4J5L7e)tw(Z
+z+d6NADpia*$xUH0Avj@DnKZ`CjAhc942(X<=nIU##ON!GzQ*XAEsTZ9VzSX8CRgw{
+z7cshq(QlA*BH`FjU_iLJAbCcEP3S}tyO#4C?RLS@bWBNT!-tf7A9&zA-4F%<SHhFT
+zOyT-~mZp>%A=wVAesaCgl?X-Wg86ka)B}EkeF78#c77p26C9b;@b4_D>m1Ml(#iBV
+zrW{gr%y^70wK0%yyewS5Adn|+o|@vD1c1)LRSeX<v@_L=9iwkCy3)=}WF}$s9Y%1_
+zeBH(>ABwu0oFCRP4Z??$7zYf+=m+7)M)AiVd3E-6UphaU&de3`F^OqqW-_yw*~}dA
+zi=Qz18KYk?0>5)rc-{HG_!_`>{Sh>xfZ1AWR|->7nKubK8OC+*ASn>@bEU~Mgc}v4
+z{jowE+U1jll%VJ<MOP`-D;S|v#(7-JEM@NO65(AKiUCwk7FIC#2$Q%P#MQ>E!X(kz
+z56rA()(fvdAV0J*_hJ%Gu$^Ds&$J1zW&xLNOgkpYu2&B*TZLC!Fez&jL=STB&3Wu(
+zgamAdRv*SB-9^$K=20nY>%{gr^Q<7|CzyTAlgv|K{Lf&L#UzJGIVN2M`zKwufWaRS
+z{5bPG^MYXQZju8h`(tu|AmrhK`GQ-{s;_Mo?`#k+xR@vi5#%Zypd}@X6EwfkR^L<u
+z&!meo;7w9OYNus)j2CnwtzAx-aA!t6%!h<pN7a;$>;?d+nj+*uIyy*2gLN`>oOum4
+z(ag)tE6l5ygjK}@lYKTZuLB1sFsTsMnSKJ@{hf66m{V4T7M`csrrFJKNdR<i*0ws|
+zCuSE&jvc5;oCJ4LG}`M$R-_$5@(g=bi(p5|_0wt^9rZ#srlT25+5^HiPYm6ex0rX@
+znX}B>nDoS?7bg3{%G0y7TIuJf)Lu6?#O(v~0do#^ogG&P<k_1y!IKY(9N4_VFXfsU
+zQ4{Pon?6Ek(ik;8j8`X=YKX?GApeH5bxQM72F|v3FrP7>GhZ-YGG8%YGv6>5nM=%N
+z=37h-#^ex84#ng!Ob*B72uzN|q!N?fnDoJ<Y6sZP_aOHlnV;xo%rDHZa72HI5q+kw
+zpa(xp!jiNLlL44igA)bo3KUc$WU!JO8y$_;yRI9&spvbw_?*UIhy6C#h8Wa=v3LrA
+zoG!VeMp)3h(*aA?2R@=nfGk*CQ$nk>hZH^)3fyfCaLEeLA(R*QcqR<%c-HYDSgNq+
+zgX3%XR`S8uGXP0|?r>8Z9W4z2L<-2FA|r%|OmZ_&11SY$tUL40Mlcf5c31^bx3Oaj
+z$oB32VnFv_21~zmD3Kk;jszdf4rf6@!I%tb7xW;=Tbu_X^}_7UfIDvN)y|1FvN*T%
+zO~>R+X>`<ehFDJE{w$P7bwn#{ASU4eUm`VxsN2MbvSDmECgG0`lM$Wa39DlxdWI8h
+zBpZcE4JNh1G9<)JovuNMlvHsoQUbz>b~GD%9e_AC9+P@Z8l)qqt|&_tw{my)=!8vS
+z&DVW9mQBZGBqpPr$U6fz33)?Y4*=P0o*>X1HW!m7Oh&g0`wVGk0bzTm*t)qxVPTPu
+z+(F$#J4bYc2HoB|`734Z5OcF->^OEjTh3b93f9I}vQ=y~CP!m(3?^eR8H>p{Oaj{p
+zm`ucE5+;+kvlG~f>?DZ0uhG}oTDFd@hb<79g2_}&I)upkjPQq?gUR`rd`{R5fjj89
+zhp6j@A-GNmoGZ96=d~_E>R1w~=%Qho)mOvaJEgT^H>MCO2%)XOm^2EUPoZ?dpY(fP
+zOJyDS_R?-JAg1jIvb%-lViYCbrzGM@wb$3QfXMm+@D3uyj|8=VnF#otK!it5>CI;6
+z^jPXxo}C9)%3@5WwXwHi(k!s;ClS-J!T2NQoiG=$iv$qhq{g<fi!qtbtMi3A8|V9F
+z>~g|u6MH9n7kf7*GccKnNy{d71*qX3OlFBvuM_Mmum@Uk3CV*!P5ngi$IfeBV7CCP
+zRL`*;*X~^ZJk{=~v%^gm(!^U2J2)2NitNrE9D6?t!NXQ|BiqKdvzyq>>;o(W5;>Rz
+z1J1)_J|+t=S%}G^t?V}TL3TU4gW1A9#DZ%s#$*X5$76Cb1Rj{2g2`H5Jx*|lLUvDZ
+zf@KnkBJtq6r9`F>c=fa)aG#y-RtS%Ud@i_3XO!B@yP?i^Vu&VO716ajE_1$v8*9Ki
+z8d@rAovlEj(xpC5wLHo0C%kT~BV-S-&!I!?^O!8fWSOw^jDvj)r0bwa@12#s7U`X0
+zkFqZjuIw@PIQugD3i~Si8hs6n&`FB(z_`4N%xqipBymI?7)sY;VTpik!i=m5&TqTk
+zVR8Z{t(dIABpg4Su`0qlcRf91l;jX#hIRVm&V7<(1Sg5*o7p$nQ|xILW_txDD=}Gx
+zNhl;Z$-d3LL%1?qz%bu0?Lu52k|bzZ@DDaI-eAwMA4)rvF11S0j5s*kR@2zdo)^-X
+z!b<#yW1J{w2`I$~Uclgd>X4rPAmQzJ%6=t2C1JlIjJ+-xItgiSSK=P_GW#u&hRKPT
+zoWv71Kb0xT;0N|cFtJ|l|7mA`5?Jr;mGtE=?5}V$7f7au=DNhxbB46DR|Rl?dwhYI
+zJ8<5(<=o>+v(af+VO<xjb<6&;(lIqD<(4@L90o^YvYv+|RsXIH50tq;31^fsa?YGL
+zIXUOTxe~6N8<EC&aD5<>5soP&-zm6%ix{~NoG3bMi3l-ln9(e~8Pp*4dfo5}L#G3Q
+z$p%c$KFxV@UVx)7*N^KDc-*)_^crq31NU5Y1l)yi4hXAKS(UWCkYY7ub;pVRA4#?h
+zP8ywSnSiSmld~{6wcCW|hH}HC3604am~8Bvf8uQ7ykRzRKAej4<sfKn!elchTQE88
+zy4ln@d7P&G4-B3&NCrRs?;Cs%adBfnV1pPhB8~CF<V=ChSv*`F1y?b034(%QAJo7b
+zM8o7#xKwG^(&;{WB({2LwVg{7>{2)e`8&fU3}d-;p)T{UKWXPO1n7TfXopMZEL=9M
+z#9S68=eBXMh}|MA=6{eN;|d@_#uai!nB*~eYi9(?m2%^I27z2T2W}T4gn3Xn1cXb5
+z3PlPty2pN8H8=6P?<R5Jt8c?3)Hg^8l<pCUDy~HQ+*uaL)pJuJcH|r!82kcEE^Ox-
+zIWVY2m|V=O$BU7Wvjp?+MkqeQ>6}wIt=wz@{!AfIxdURAc5V(g7n4gcxsz9ybk=e@
+zhtK2YL)60E%H77@j>)B%T!zUzH*pK-YaEaSISuf>+y4tu3wI|RaB+8G^6oAbt>7S0
+zvXxuO-NUWoR&#5(wcI*PF302wOs>QvL{*SjS&hjxTe*9=`?w9<{qTPq*N(}xn1qoK
+z18o)mY{TS(|M#L6FK5&u-qIK<To>uo%0t{92wH9^;pZMjzl&w=<a%fU5ZVBQkma}~
+zsn3IhyF0U|xTo1y!5!?!<Yr9X2hL1z2b&~k@Eozcojb@u<g)>j8#`k}?l5;mm{l)g
+z^8PjsM7LI$RRK}}o@;M{drrGz1-PM9dXWgnq!S@$?j-zW4mzOPxK}XQ*2cYt$#$qt
+zuIY9OqjXKBbFJzLBP<cFaf0k8xcKI#zPJ1?{nxS7bEnvEIk3eCV5!IC7ON+kJp<}`
+zL1v*%!j%pkQC}$3JxkYy-sI~%!~de&J+>Aal3U<%voTV**0t_tbi4=yZtYOS0yzqS
+zU~zLO+;8eH#jBwcAf_I3GjAaME0X;?1Xn#}Or5RD(KG{!54F0Er&1x~7^#vl)Fu>J
+zgmxPxm|fDU=jVav4*m<tDAk>;2LAs9E8HpZoRNG$GT#pcKXD$DJNSSe39d*JB)FoY
+zw4K>m?gIBkZ?5f2aBW{>@*&Z+?dMez*h|6^c^Q+tx+cVT92|T7E%(E2<9_3QmlJY=
+zYm>t+2{ug+V{#8B_lkeO{XE;5$dxm4*WTu~+)eH-&F$Toe5A+ZUa6J#BT>)})@_>0
+z`^oz|W0t2e`Do9WMLq;#7Wq*5F!^x#2uwbP$;UCd50g)J#w>Dzc>%(4fye<6VngQQ
+zFErT^)yVy&NaYDBQi1)=^=b2tfy5?ZAP>hxFmavXzC2v|`YGvY?}5GCAO-f%bOiSQ
+z<NGV*2FV1U5p6|225dzhgUJKe$IAwxS**Ja$`j<Na1bU>lqboP<tdmvh)Hm~FJSV}
+zW_g<2OfQo|;^{CZ;d~l4+b4N-afW?@cr}ZZq3+C#bY?wDrQl4+j+EpIWt4*OJKV24
+zS6(Eb%aiBJ3*@k$2WNf+lSeW6613OS*W{&;rdlWp{+N{c8Cqy-tPwWrVpEKmm&&zG
+zmrj7-g6p1dJF*XXRSu!bM%m+~Kt&#01`TJTRgE<ba6BvIHG2#Zp$ieaB*jW%dDrSA
+zx63EO!XX`c%E80G+>u6<Pl5PNUMsJ|BrGbgcLoRY26<D@I85FwhmibLOuojeI;E(J
+zThJr?lFyXSx$d*M@>?+Z28Q-rRhK|jar271hkf$f<nw_(ImAeBw$X6%cSejkVTaS?
+zsO>m|6BAZ97Iev%$d?v~*%7g(YcO0n9t<~aM-#F1*Yp)Q9OvN1{2|OpII>m2jrl=v
+z)EdsDFm-VBb%$`m#N5rmVG^@iI5%S8c!$}|Jjy%{CpOP82jEcV5c3Z66Wnt@j2+E7
+zSj^tb-Us=cN8mR4y>Ju#e)c)`dAN)I2#2^Jh+U_0&2WEwD>n<G!o_fJ{043#*UoK*
+zTi`w526!L2S{^Eo1ar-R8{f0RobutucPrfXUL`0<zFdA#e#vF9i@!^tOR!6ri^fIg
+zlH!u(lJ8RJQtVRdGSQ{hrQW5%rNw2sORLK)mqjl3x;*FdlFJE~4_rQWx$N?T%TF%9
+zxcu&lTxG7bE92V7b&zX-YnW@KYpiR5>p0h`t}|WdxZdK5U6;Gw>$=5tkLzQukGt-3
+zeada9o3ESJEz-^C7VQ@67Vnnmmh6_{mghFfZMqxpw$W{?+Yz_-+%C9%>GqS`&u+iC
+zU3Hhc7rGa_m%5L0FL$qSuXL|=pWr^peX@J4d%b&ud!u`^`!x3%?lawIyU&G^ka_O6
+zxzBfB=)Tx}iTg75yWE$%uXJDKzQ%o>`@QZP+&8*^?S9eyvilYH@7;fN|JnUl_iOII
+zdms;)2kpUn$UR&=+&%huczX2p=<hMmW3b0ikKrC8J-j_s9)2DH9zh<V9vTn5N2G_z
+zW3)%CN4$r{Bikd_Bj4i*k3$|WdK~pQ)+e%0VxQzbseR0S9_w?k&kKDH_c@{nR75I_
+zifF}X#b(7LiboZD6;F8f@f_wk!c*z#<GI*#wdY#T^`7^6xp@ut8tOINYoym)uRFY!
+zdfn-Dx7XFa^1iNp-TU_GTi<t9-#LA6>5Kbb?I-W&+RwdTpMDGat?aj|-<p2w`VZ)@
+z>hIS-pnqV0+<#gByZSHhzq0?80mJ}u05yOaU>#69pngEZfW`rD4ftfhrvpA8@a4dq
+zf#m}$238KN9(ZivnSo~qzBBN>LCJ%12jvec98^4L-=M>TjtqKf(DA{EgR=+c4$dE3
+zIQa136NBFze0uO(Ljr~vhC~iA4v8MJX~^y&dxktV<nf_FL!*Y8hK?FKX6VC1pBcJ;
+z=yOA#ALc(yKP+Nc)G*Vq`-kluwrkk#VS9#C!##)h9o~QVz~PO<ZyAn<-#YyE;lGaH
+zM!1Y{8{six(ukH3(?_(9m^I?cNMa;8k{Zd3Y#2Fb<Sird$XiE#Ir1kZQp%LHl2yu;
+zUdn#T0m?zjA<ALOC}p{_R=HAnpK_~mn{toxfbyvFnDS-itIF4vXO-_L-&1~|{80Ik
+z@;7fkZ@qV!ceQt;_Z;uV-YdNC@m}q{)_cA8X74TD+q}1X@ATf~{gU@3@85j<eZqZ4
+z`=t34_>}up_*D8-`%Lh0_)PU_@@esz?$hcs&*u)G<v#cOZ1dUfv(smn&u*V5eV+Dt
+z*5`oFL7x|VUiLZVbI#{$pC5dF^7+N*s?TpKRwY-ts@zq5RGz9KDwQfkWl|-ml2j?G
+zG}TyDo~l4qq$*LBsm7}&s2WwXRf|;1RV!7iRBKf0RGU-}sJ5yeRP9hbq&lj)sJiCs
+z=Nsm0^iA;1@-6l)^&RJ1?pxto<2%K-&e!2P)wjuaw(sq}%YE1T-sgM2Z=3HX-<`g@
+ze0Tfq@qNtqao+>JM}1HEzVCa^_q^}Nz88Ei`d;?E;`_btkG?<qk$!G|{r!CWg8f4M
+z!u_;<dcV<rF@AA=34Td_DSlagC4N<Y4SubDv;5}x-QtJ+7W*ynTjqC{-*Uf|e)sup
+z_uK3Dyx(!ZSNvY{d&BRf-@AVA`<?SU@At9a1;2}a*ZevE{{AEUmHs~dzW)CH;r?2G
+zy?=y%l)uS8!9T;l#J|$N+JA!oB>&0&P5v$Z)BRihXZg?ZpYMN{|62bo{tx><;{T}s
+zUjHZjpYwm-|B(NS{zv_f`JeQE&;Nq|75}ULzXcEhWB?W59?&PiGoWuk|A2u3%7Bo7
+z$biIvi~vhOc0g`Ge!%zuYk)1FD!?8vF`yw}cEEywl>zq!+#k>uuqohyfL#H*1NH<w
+z7Vvn$zJP-P#{*6UoDcXi;Ol^k0ha@=1Y8aHO--mtHKk_MebhtLDz!#!Qjb!PQOBy|
+z)nnBeYKuBsovY4Qk5^AnJJhq)x2qSZ7pd=1FIBHnuTig4->crB-l%?1y+{4D`l$L1
+z^-1+9^%?b9^?CKj>I>@6)L*E-Qh%@hJ<u(%f8fBt!GS{qhX?uxssn=pLjuDBHG!tU
+zguwK`;y_zqRiHg^Vqi^RV_<XOw7?mGGXrM_-X3^o;OfB5fe!^f9Qa7!qk($^_Xj=~
+z_<Z1@z!w9L2EGyaPT(hj-v<5~crEbvAQU7EatrbZQUrMg^$QvhG%_eKNEZ|vlom8L
+zC?m)clpRzOR2EboR1s7aWDlwjnh}J9mIbX2S{t-J=)R!)gSG|j2-+32JLu7%y+Qkf
+zjt89zIv@09(APm1gDwYM3A!5edoUSH1+&5OV6Wg|!2!XB;4#6m!STU~!O6jv;GE$6
+z;KJbI;L_l#;M(BU;CaEf1<wy&7`!-mMewTNwZZFy?+d;^cw6wJ!OsQ16ns4RmEhNc
+z-w1v?_`TqB!RLcN3H~(rQt;0qWJsToK_NpzhJ}m>QHBJDgoK2LXhZZN5g{=lX(0t6
+z<slUzl_Aw36G9vzjUg=|(?eQAW`*1qvNU8}$fl47LbirH7_uYev5+T1o(g#;<Uq*5
+zkYgbyL*5PfJmi~@%OT%|{2X#M<o8e%>Jh34^$P7DIzMzp=slsUL)V4=8pefrhV=^@
+z7&atqc$j}!U|2|4c$hBC5SATQ9kw`ZQ`pY1hr{-SJr;H#>}=SDu+PK33cDEgZP<6=
+zitxeV{^9!Y$Z%8m=<wL^gz)6>-0*_%;_$NY@^D*tRk%I8A$)fDs_<vS&xC&wenm4}
+z<F6T`iPI!%QZ!~wh9*mst0~YFYsxg`nhMPn%`^?xEYYmiv}+#H?9;rUc~x^(b3yZ|
+z<}=L~nk!mDE7!Vd`)Iwi{k0>s-dbO6fHp`QqD|9|)6Ubb*KXEs)o$1B)IOm-q&=cN
+zrhP^Gy7q+j8|{xeO6RHTryHmnq8qML>Qp+7POpp9nRKIdvATF&qRyf#)ivwZ>-Or7
+z>fX>@(=&Q+y{|q%AEbviO1)kmsW<6I>tpo^`ec2YeyqMgU!k9(pQgw9CHmF+cKt*8
+zefk&luj=2?zpH;w|AGE9{rCEx^uOwVGa!S^;Av1ALJcv7ctesQ)iBnOX~;I@843*(
+z4U-MEhI+$PL$hJJVWwfWVXk4JVTEC*;RVB6hOZ;&h!GKnh?a=i5w}JxjaV14HR8dD
+zoe>X5?1|VL@kGR-h$9ilB3_AjJ>q1<>4>)?K8g4=;`4~FA}2+*L{5)vjhr3%apdL5
+zE0Nzv{uI>^H7DwpC>(WL)E7}dMqQ2i-AEc)ql?kq*vHu4ILzp03^R^0#u*chDaLf8
+z#h7EvGnN=Dj5Wq-##zR>Mr@pKTx48gTxMKv+-Tfn++y5e++}>k_^9zY<6+}b<8kBb
+z#*@a=#<z?g8ox1KG5%ou+4!3YnJ5!u>SG#aQkncsfu<0X-UPd1(`ZwSX{u?7=>gL&
+z)03uWOb1NQn+}_fnvR*ynBF&iX!_Xnsp%WjWz%=2A5A|;`$T6)&yK!5dP(&9=xxyt
+zNAHQ=8@(_3K=kv`hog^1AB#R2eJc8$=+B}rMt>Xqee_S!zmFnE(WAIgE~EO68ZgRl
+zlx~!1)aX&MqY_4$M`eu48kIXLf7JL<)uZZ0wTwAC=G`%$jJY!Amlzb|5i>MqM2vTg
+zZ%jZ;P)uk{bj+BTxR}J4lo)eNMvNt<DP~Q~^D$q=d=v9y%<r*WtZQt)*rBn?Sbc0{
+zY+`IiY*uVeY+mfR*r~D2vD0H)V`s<Cjm5FI#?Fsj6njVP(%5ye_r`9BZHv7UN5qkF
+zR2&;OA+9N|C2o4$%(!!LU&mdHyBzmjd|`Z5yghzm{N(u8<KK(_ApXPnj}sCTvJ<Qc
+zl?nEQNeNRD>Jz3WG$-7eFh5~Y!jgn#33n%~NVq3qb;6c}V~MVb(TU>{XC$sj+?lvH
+zabM!oiO(h;OZ*`5eBvjGpCx{o_)X&F#P1S+O#CJBT9Q{%|D=IQLz0FkDU(!5{z-vJ
+z!AW6Bnj~}5xTHx*Ym#;(9Zb5EbS+ttJR(_{9FlBG9-SPUoRFNHoSF<rtjRUWwaJd;
+zsmXJbZ%v+`yeN5D^4-ZRlUF5gPJSYJU-H4^SCdaBpH4oT{C@I>$sZ?QNWPeSHHA*$
+zQe0C!Qan?Jqzq3{rl?Z<Q`9NxDU(y?rff*rk+Lu4>6HB`2U8BE97#Erawg^Nl=o83
+zrJPUsB<0hT&r^xiKB?ZRajA~f6{#CjH>GY#eK2)r>aNu1QeR0uk$Niit<?8Y&!v8p
+z`bp|{sXwPNX|8D=X`X2V(gvpuOB<0kGA%4^R9aeEdYUCICoMm%D6KSYV%p@iy0nJ0
+zrnG5kt!cB;mZhyvYfIaib|CF^+DB;@(mqf7D(zz0<+R_-$V{18vy0iyJlH(UJksoA
+z_A>{V4dy6ww0Vp<&YWP*GUu8L%*Ez1^LTTOd78P^JllMWd7k+;^WEm<<`w39%<blf
+z&3nvy&HKzxoA;X!nqM`)Za!%~ZGOxAj`@A_xv|99A!7|=v&K#yJALfjv3TrlV;78F
+zHumnZE5@!GyJqa}u^*><qz_CVmOe7wC*3c7RQlNTy!49niRpFev(s0k-;=&C{c!rb
+z=^vz@PyZzSv-B_1ze&HG{$2Wy>A$33%jlOeAY*XG(2Nlo-Wk3b0U1FVAsJyA+6;Y$
+zC1ZTX?2NlIwq-n#aXjOLj4PRaGJP}0WTs@MW{%Cw%goO#%(P}!WL9O?X4YjkWVU9`
+z%$$?CIP=cT<(c<nuFJePb3^9F%zc?}XMURbMdsI;mol$pexLc9g|=`OSBr;5VHs}m
+zvG`fkmQahvqPIj?(kwZaa!ZwEf~Ce%Z<%UowoJ3!W?5=kXSv_fZh646-SUuSw`Gsz
+zu;o?DJC<{nk1Q7~Us}GlT(n%y>YJs_ipk2$D$FX$8kc3ws?4%yP0E^*Ri8CAYkt<E
+ztR-1@X5F2&GHZ3#x~%)MHfFVFZO%H9buR16te>+L*+a9#vs1FiWjnHGXV1x=o6To0
+z&AuypMfR%fwb|>lU&wwv`(*a%?6cYLX1|~PQTC<mAG3eSzLrDeusJR{?m3Daubh~i
+z!kqe?={YlV=H%Rxvm|GI&W4<}oXt5~bGGL^l(ReMK+f|yhjWhR9M5?*=Z%~<b57@c
+zlyfoHC3i$_bZ&8Ob?(gE1-W<SF3(+=yDE20Zd>l=+^x9}=I+ehmHR~Q!Q7W~Kg|6u
+zPnI_zPnQ>wXUrRw7n2vC*OWIq@AkZfd3WS3%ey;oMc&4|9eI!BJ(l-G-cxxm<eks^
+zG@r@un?E3baQ?9T!2FQ>@O)i<Y<@z1a(-HVQGRv)#Qe$mwfXz=kL16Xe?I@G0#p!E
+zpe-0zP+4$C!J2|~1@{)*U$CuUN5QUw-33Pr&K7)A$Q7yz{R`EF!G&RksfF2vMTJ#`
+z^9z?3t}I+#xUTTN!aaq13-=X1UAVvSVBxXClZB@X&lbL0_(9=^h2IojF8r?W$0DkT
+zEpjPxFB(!byhvH3D$*3`iz16mMQKF^Ma4yBMdOR66}1-4Dw<ow7cDAUQgmn0-9_t)
+z4i&vrbfxHOu}^V8ab|I8@%ZA3;;P~a#gmF>7vEmIxOi#tUB%0b?=Rk5ytR0H@x#S?
+ziuV>jQGBrYSn-+ScZ)wLK41K4@fXEk7hfzvB`zfcONNz<Eb%D`C<!VFEeS6fQ(`Zf
+zTr$06cF8Rz^GX(!EG}7Ea%aifk}V|<mFzBgwB+%UXG@+dd7<RRlA|TxmAaMsmWGyU
+zO7*1?rEvW~X?|%@X=&;B(u&fm(g~$4r87!rmCh~2rMHzXC|z8-q;zfR1EtTEzFB&y
+z%%f~bS$Ns#vgESVGILpaS!P*bSxH%0+4wSRnXPPc*)3)B%5E=PShl!qY1yi>^<^8%
+z+R8SS?Jj$??D4WE%bqFQU-ntq_hmno{aW_hI5bW+&SRWuT*A1lak=9P#ubl$Yy5}h
+zeaemH$>pi#=JJg4g7V_>vhwle&E>d!Vfh{9%gXOAUsJxmd_#F#`KI!n<qwzdDSxc|
+zVEOCiC(BQlpDlm4{DboI<)4&)SN>!9FXh*)gjHr`ta7WXb&%EDs<Qf71FV5ooi)O0
+zv_@M;TVt%L)*R~uYmK$m>aaFiTdZ@f3#^N+ORaZVS6J_{wp$;tZnN&NzG8jb`kwWi
+z^&{&K6|xGtf~#<?7*sK|Vnl^^g{ERmMO;N<MRLW{6-O(MRlHpBTE$xx?^L{BajxPg
+z8*THjdD{Bf2HJ+$R5pKGpe@7}ZqwSLZMnAbHfXJ|&9U*eTW#}gi)_nnD{ZT7>umSh
+zHrSrAowZ%9>|Z&ea%81<Wmu)Q(oh*y8C^NLGP!bWWoBh|Wp1Ulvbu6&<>X37Wn*Pa
+z<@8Fva#7`~%Jr2SD%&czR6ba_vvODEzRH7@uU5WM`DW#r%C{@ut-Mr4R<Tv?V!DkW
+QN$FqtGU;FE-&KA7A2EBMr2qf`
+
+delta 14096
+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
+
+diff --git a/FlowerShopping/FlowerShopping/AnnotatedPhotoCell.swift b/FlowerShopping/FlowerShopping/AnnotatedPhotoCell.swift
+new file mode 100644
+index 0000000..9334618
+--- /dev/null
++++ b/FlowerShopping/FlowerShopping/AnnotatedPhotoCell.swift
+@@ -0,0 +1,60 @@
++//
++//  AnnotatedPhotoCell.swift
++//  FlowerShopping
++//
++//  Created by DUONG PHAM on 5/25/17.
++//  Copyright © 2017 DUONGPHAM. All rights reserved.
++//
++
++import UIKit
++
++class AnnotatedPhotoCell: UICollectionViewCell {
++    
++    @IBOutlet fileprivate weak var imageView: UIImageView!
++    @IBOutlet fileprivate weak var imageViewHeightLayoutConstraint: NSLayoutConstraint!
++    @IBOutlet fileprivate weak var captionLabel: UILabel!
++    @IBOutlet fileprivate weak var commentLabel: UILabel!
++    
++    var photo: Photo? {
++        didSet {
++            if let photo = photo {
++                imageView.image = photo.image
++                captionLabel.text = photo.caption
++                commentLabel.text = photo.comment
++            }
++        }
++    }
++    
++    // Add by Duong for configure product
++    func configureWithProduct(_ productDict: NSDictionary) {
++        // Setup the cell with information provided in productDict.
++        captionLabel?.text = productDict.value(forKey: "title") as? String
++        
++        commentLabel?.text = productDict.value(forKeyPath: "price.data.formatted.with_tax") as? String
++        
++        var imageUrl = ""
++        
++        if let images = productDict.object(forKey: "images") as? NSArray {
++            if (images.firstObject != nil) {
++                imageUrl = (images.firstObject as! NSDictionary).value(forKeyPath: "url.https") as! String
++            }
++            
++        }
++        
++        imageView?.sd_setImage(with: URL(string: imageUrl))
++        
++        
++    }
++    
++    /*  This code calls the super implementation to make sure that the standard attributes are applied. Then, it casts the attributes object into an instance of PinterestLayoutAttributes to obtain the photo height and then changes the image view height by setting the imageViewHeightLayoutConstraint constant value.
++     */
++    
++    override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
++        super.apply(layoutAttributes)
++        
++        if let attributes = layoutAttributes as? PinterestLayoutAttributes {
++            imageViewHeightLayoutConstraint.constant = attributes.photoHeight
++        }
++    }
++    
++}
+diff --git a/FlowerShopping/FlowerShopping/Base.lproj/Main.storyboard b/FlowerShopping/FlowerShopping/Base.lproj/Main.storyboard
+index 4f6c9cb..606c859 100644
+--- a/FlowerShopping/FlowerShopping/Base.lproj/Main.storyboard
++++ b/FlowerShopping/FlowerShopping/Base.lproj/Main.storyboard
+@@ -25,7 +25,7 @@
+                 </navigationController>
+                 <placeholder placeholderIdentifier="IBFirstResponder" id="R64-KZ-dJA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+             </objects>
+-            <point key="canvasLocation" x="779" y="-350"/>
++            <point key="canvasLocation" x="788" y="-313"/>
+         </scene>
+         <!--Collections-->
+         <scene sceneID="TqD-Oe-edk">
+@@ -47,7 +47,7 @@
+                                         <rect key="frame" x="0.0" y="22" width="600" height="80"/>
+                                         <autoresizingMask key="autoresizingMask"/>
+                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BXK-dN-TXy" id="tPq-yf-CNE">
+-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
++                                            <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
+                                             <autoresizingMask key="autoresizingMask"/>
+                                             <subviews>
+                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gVj-aJ-DbR">
+@@ -121,7 +121,7 @@
+                                 <rect key="frame" x="0.0" y="22" width="375" height="60"/>
+                                 <autoresizingMask key="autoresizingMask"/>
+                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ADh-dI-fpG" id="ycC-ec-t4v">
+-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
++                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                     <autoresizingMask key="autoresizingMask"/>
+                                     <subviews>
+                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lp9-Tw-7hs">
+@@ -169,7 +169,7 @@
+                                 <rect key="frame" x="0.0" y="82" width="375" height="60"/>
+                                 <autoresizingMask key="autoresizingMask"/>
+                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OAN-K0-rtE" id="D6Y-Hd-jq1">
+-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
++                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                     <autoresizingMask key="autoresizingMask"/>
+                                     <subviews>
+                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Load more..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4Z-VV-4ev">
+@@ -282,7 +282,7 @@
+                                 <rect key="frame" x="0.0" y="22" width="375" height="44"/>
+                                 <autoresizingMask key="autoresizingMask"/>
+                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cmd-RQ-AJS" id="RXK-if-hJ2">
+-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
++                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                     <autoresizingMask key="autoresizingMask"/>
+                                     <subviews>
+                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Umk-dF-Udh" customClass="DataEntryTextField" customModule="FlowerShopping" customModuleProvider="target">
+@@ -309,7 +309,7 @@
+                                 <rect key="frame" x="0.0" y="66" width="375" height="44"/>
+                                 <autoresizingMask key="autoresizingMask"/>
+                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pew-CT-yWV" id="w0o-Xj-lsA">
+-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
++                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                     <autoresizingMask key="autoresizingMask"/>
+                                     <subviews>
+                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fd7-54-gTh">
+@@ -343,7 +343,7 @@
+                                 <rect key="frame" x="0.0" y="110" width="375" height="44"/>
+                                 <autoresizingMask key="autoresizingMask"/>
+                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="29q-ZP-ngd" id="nEm-tZ-OeY">
+-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
++                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                     <autoresizingMask key="autoresizingMask"/>
+                                     <subviews>
+                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Continue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Puj-Td-STw">
+@@ -400,7 +400,7 @@
+                                         <rect key="frame" x="0.0" y="1" width="600" height="80"/>
+                                         <autoresizingMask key="autoresizingMask"/>
+                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YnO-Cw-QKa" id="SuY-jS-I4w">
+-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
++                                            <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
+                                             <autoresizingMask key="autoresizingMask"/>
+                                             <subviews>
+                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Thw-vL-cH0">
+@@ -553,6 +553,23 @@
+             </objects>
+             <point key="canvasLocation" x="1602" y="360"/>
+         </scene>
++        <!--Navigation Controller-->
++        <scene sceneID="JiG-V2-xKy">
++            <objects>
++                <navigationController id="fMq-MJ-nXB" sceneMemberID="viewController">
++                    <tabBarItem key="tabBarItem" systemItem="topRated" id="M6E-LP-e4e"/>
++                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3L3-93-twU">
++                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
++                        <autoresizingMask key="autoresizingMask"/>
++                    </navigationBar>
++                    <connections>
++                        <segue destination="ORU-Ln-mx4" kind="relationship" relationship="rootViewController" id="AtV-Ip-vUZ"/>
++                    </connections>
++                </navigationController>
++                <placeholder placeholderIdentifier="IBFirstResponder" id="rpn-Ez-Z0M" userLabel="First Responder" sceneMemberID="firstResponder"/>
++            </objects>
++            <point key="canvasLocation" x="758" y="1048"/>
++        </scene>
+         <!--Tab Bar Controller-->
+         <scene sceneID="oox-LW-4Na">
+             <objects>
+@@ -566,6 +583,7 @@
+                     <connections>
+                         <segue destination="QVS-pN-F4a" kind="relationship" relationship="viewControllers" id="SR8-Pf-xMo"/>
+                         <segue destination="ATc-pk-ehz" kind="relationship" relationship="viewControllers" id="lOq-Ud-4v3"/>
++                        <segue destination="fMq-MJ-nXB" kind="relationship" relationship="viewControllers" id="PRF-Z5-DUP"/>
+                     </connections>
+                 </tabBarController>
+                 <placeholder placeholderIdentifier="IBFirstResponder" id="UIy-n8-yaq" sceneMemberID="firstResponder"/>
+@@ -587,7 +605,7 @@
+                 </navigationController>
+                 <placeholder placeholderIdentifier="IBFirstResponder" id="DRJ-Uy-Zqf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+             </objects>
+-            <point key="canvasLocation" x="779" y="418"/>
++            <point key="canvasLocation" x="778" y="359"/>
+         </scene>
+         <!--Shipping Address-->
+         <scene sceneID="8YM-ym-3if">
+@@ -602,7 +620,7 @@
+                                 <rect key="frame" x="0.0" y="22" width="375" height="44"/>
+                                 <autoresizingMask key="autoresizingMask"/>
+                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lBp-Wb-ABC" id="YO3-Dr-l0e">
+-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
++                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                     <autoresizingMask key="autoresizingMask"/>
+                                     <subviews>
+                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c4m-tE-Gle" customClass="DataEntryTextField" customModule="FlowerShopping" customModuleProvider="target">
+@@ -629,7 +647,7 @@
+                                 <rect key="frame" x="0.0" y="66" width="375" height="44"/>
+                                 <autoresizingMask key="autoresizingMask"/>
+                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vzS-VP-CHb" id="xhe-ET-gDK">
+-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
++                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                     <autoresizingMask key="autoresizingMask"/>
+                                     <subviews>
+                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NLe-tF-AaT">
+@@ -663,7 +681,7 @@
+                                 <rect key="frame" x="0.0" y="110" width="375" height="44"/>
+                                 <autoresizingMask key="autoresizingMask"/>
+                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HVJ-Oo-KtS" id="nH5-Mh-UiG">
+-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
++                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                     <autoresizingMask key="autoresizingMask"/>
+                                     <subviews>
+                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Continue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5da-Ob-suk">
+@@ -710,7 +728,7 @@
+                                 <rect key="frame" x="0.0" y="22" width="375" height="60"/>
+                                 <autoresizingMask key="autoresizingMask"/>
+                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tNX-Wr-Gxk" id="uWQ-WI-dBd">
+-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
++                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                     <autoresizingMask key="autoresizingMask"/>
+                                     <subviews>
+                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="£249.99" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZn-5E-NGP">
+@@ -774,7 +792,7 @@
+                                 <rect key="frame" x="0.0" y="22" width="375" height="44"/>
+                                 <autoresizingMask key="autoresizingMask"/>
+                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jhH-5N-ZyH" id="SQ2-Z4-DeI">
+-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
++                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                     <autoresizingMask key="autoresizingMask"/>
+                                     <subviews>
+                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Io0-sA-eyz" customClass="DataEntryTextField" customModule="FlowerShopping" customModuleProvider="target">
+@@ -801,7 +819,7 @@
+                                 <rect key="frame" x="0.0" y="66" width="375" height="44"/>
+                                 <autoresizingMask key="autoresizingMask"/>
+                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="A3y-iw-Kxu" id="QVA-rV-07f">
+-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
++                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                     <autoresizingMask key="autoresizingMask"/>
+                                     <subviews>
+                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Buy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1d-ip-Jmp">
+@@ -830,6 +848,95 @@
+             </objects>
+             <point key="canvasLocation" x="4440" y="874"/>
+         </scene>
++        <!--Photo Stream View Controller-->
++        <scene sceneID="MiN-6l-IGo">
++            <objects>
++                <collectionViewController id="ORU-Ln-mx4" customClass="PhotoStreamViewController" customModule="FlowerShopping" customModuleProvider="target" sceneMemberID="viewController">
++                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="fI0-b9-4KH">
++                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
++                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
++                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
++                        <collectionViewLayout key="collectionViewLayout" id="idQ-Ge-yHQ" customClass="PinterestLayout" customModule="FlowerShopping" customModuleProvider="target"/>
++                        <cells>
++                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AnnotatedPhotoCell" id="yLq-qp-Gv2" customClass="AnnotatedPhotoCell" customModule="FlowerShopping" customModuleProvider="target">
++                                <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
++                                <autoresizingMask key="autoresizingMask"/>
++                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
++                                    <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
++                                    <autoresizingMask key="autoresizingMask"/>
++                                    <subviews>
++                                        <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="fpt-L6-1W4" customClass="RoundedCornersView" customModule="FlowerShopping" customModuleProvider="target">
++                                            <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
++                                            <subviews>
++                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BaR-wE-thv">
++                                                    <rect key="frame" x="0.0" y="0.0" width="180" height="120"/>
++                                                    <color key="backgroundColor" red="0.047143883999999997" green="0.36116248369999998" blue="0.163305968" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
++                                                    <constraints>
++                                                        <constraint firstAttribute="height" constant="120" id="GO7-OK-vlU"/>
++                                                    </constraints>
++                                                </imageView>
++                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Caption" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aSH-Tj-S4Y">
++                                                    <rect key="frame" x="4" y="124" width="172" height="17"/>
++                                                    <constraints>
++                                                        <constraint firstAttribute="height" constant="17" id="vlS-aL-n6W"/>
++                                                    </constraints>
++                                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="12"/>
++                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
++                                                    <nil key="highlightedColor"/>
++                                                </label>
++                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comment" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J6R-6S-SKl">
++                                                    <rect key="frame" x="4" y="141" width="172" height="14"/>
++                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="10"/>
++                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
++                                                    <nil key="highlightedColor"/>
++                                                </label>
++                                            </subviews>
++                                            <color key="backgroundColor" red="0.047143883999999997" green="0.36116248369999998" blue="0.163305968" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
++                                            <constraints>
++                                                <constraint firstAttribute="trailing" secondItem="aSH-Tj-S4Y" secondAttribute="trailing" constant="4" id="5eH-BT-imU"/>
++                                                <constraint firstItem="BaR-wE-thv" firstAttribute="leading" secondItem="fpt-L6-1W4" secondAttribute="leading" id="6BY-xN-au9"/>
++                                                <constraint firstAttribute="trailing" secondItem="BaR-wE-thv" secondAttribute="trailing" id="MmO-Sl-jFf"/>
++                                                <constraint firstItem="J6R-6S-SKl" firstAttribute="top" secondItem="aSH-Tj-S4Y" secondAttribute="bottom" id="NeY-Ay-oWq"/>
++                                                <constraint firstItem="aSH-Tj-S4Y" firstAttribute="top" secondItem="BaR-wE-thv" secondAttribute="bottom" constant="4" id="R6N-B6-P04"/>
++                                                <constraint firstItem="aSH-Tj-S4Y" firstAttribute="leading" secondItem="fpt-L6-1W4" secondAttribute="leading" constant="4" id="bJr-6C-EmT"/>
++                                                <constraint firstItem="BaR-wE-thv" firstAttribute="top" secondItem="fpt-L6-1W4" secondAttribute="top" id="eU0-r6-ZK7"/>
++                                                <constraint firstAttribute="trailing" secondItem="J6R-6S-SKl" secondAttribute="trailing" constant="4" id="wxQ-iV-MzP"/>
++                                                <constraint firstItem="J6R-6S-SKl" firstAttribute="leading" secondItem="fpt-L6-1W4" secondAttribute="leading" constant="4" id="yR5-Re-6fl"/>
++                                            </constraints>
++                                            <userDefinedRuntimeAttributes>
++                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
++                                                    <real key="value" value="5"/>
++                                                </userDefinedRuntimeAttribute>
++                                            </userDefinedRuntimeAttributes>
++                                        </view>
++                                    </subviews>
++                                </view>
++                                <constraints>
++                                    <constraint firstAttribute="bottom" secondItem="fpt-L6-1W4" secondAttribute="bottom" id="8JY-BJ-CyA"/>
++                                    <constraint firstItem="fpt-L6-1W4" firstAttribute="leading" secondItem="yLq-qp-Gv2" secondAttribute="leading" id="fLm-zD-Aca"/>
++                                    <constraint firstAttribute="trailing" secondItem="fpt-L6-1W4" secondAttribute="trailing" id="fSg-wa-qHJ"/>
++                                    <constraint firstItem="fpt-L6-1W4" firstAttribute="top" secondItem="yLq-qp-Gv2" secondAttribute="top" id="kII-fI-CsH"/>
++                                </constraints>
++                                <size key="customSize" width="180" height="180"/>
++                                <connections>
++                                    <outlet property="captionLabel" destination="aSH-Tj-S4Y" id="zZ4-QI-ZCe"/>
++                                    <outlet property="commentLabel" destination="J6R-6S-SKl" id="H9f-FF-fYe"/>
++                                    <outlet property="imageView" destination="BaR-wE-thv" id="xfU-NM-OMp"/>
++                                    <outlet property="imageViewHeightLayoutConstraint" destination="GO7-OK-vlU" id="kUS-vx-i87"/>
++                                </connections>
++                            </collectionViewCell>
++                        </cells>
++                        <connections>
++                            <outlet property="dataSource" destination="ORU-Ln-mx4" id="NgS-rz-5cX"/>
++                            <outlet property="delegate" destination="ORU-Ln-mx4" id="3Yn-me-0fD"/>
++                        </connections>
++                    </collectionView>
++                    <navigationItem key="navigationItem" id="pgI-1A-b9m"/>
++                </collectionViewController>
++                <placeholder placeholderIdentifier="IBFirstResponder" id="9De-4j-90E" userLabel="First Responder" sceneMemberID="firstResponder"/>
++            </objects>
++            <point key="canvasLocation" x="1601" y="1048"/>
++        </scene>
+     </scenes>
+     <resources>
+         <image name="first" width="30" height="30"/>
+diff --git a/FlowerShopping/FlowerShopping/FlowerLayout.swift b/FlowerShopping/FlowerShopping/FlowerLayout.swift
+new file mode 100644
+index 0000000..e0c5119
+--- /dev/null
++++ b/FlowerShopping/FlowerShopping/FlowerLayout.swift
+@@ -0,0 +1,197 @@
++//
++//  FlowerLayout.swift
++//  FlowerShopping
++//
++//  Created by DUONG PHAM on 5/25/17.
++//  Copyright © 2017 DUONGPHAM. All rights reserved.
++//
++
++import UIKit
++
++// MARK: - Protocols
++protocol PinterestLayoutDelegate {
++    
++    // Request height of photo
++    func collectionView(_ collectionView:UICollectionView, heightForPhotoAtIndexPath indexPath:NSIndexPath,
++                        withWidth:CGFloat) -> CGFloat
++    
++    // Request annotation for photo
++    func collectionView(_ collectionView: UICollectionView,
++                        heightForAnnotationAtIndexPath indexPath: NSIndexPath, withWidth width: CGFloat) -> CGFloat
++}
++
++class PinterestLayoutAttributes: UICollectionViewLayoutAttributes {
++    
++    // This declares the photoHeight property that the cell will use to resize its image view
++    var photoHeight: CGFloat = 0.0
++    
++    /* This overrides copy(_with:)
++     
++     Subclasses of UICollectionViewLayoutAttributes need to conform to the NSCopying protocol
++     because the attribute’s objects can be copied internally. You override this method to
++     guarantee that the photoHeight property is set when the object is copied.
++     */
++    
++    override func copy(with zone: NSZone? = nil) -> Any {
++        let copy = super.copy(with: zone) as! PinterestLayoutAttributes
++        copy.photoHeight = photoHeight
++        return copy
++    }
++    
++    /* This overrides isEqual(_:), and it’s mandatory as well.
++     
++     The collection view determines whether the attributes have changed by comparing the old
++     and new attribute objects using isEqual(_:). You must implement it to compare the custom
++     properties of your subclass. The code compares the photoHeight of both instances, and
++     if they are equal, calls super to determine if the inherited attributes are the same;
++     if the photo heights are different, it returns false
++     */
++    
++    override func isEqual(_ object: Any?) -> Bool {
++        if let attributes = object as? PinterestLayoutAttributes {
++            if( attributes.photoHeight == photoHeight  ) {
++                return super.isEqual(object)
++            }
++        }
++        return false
++    }
++}
++
++// MARK: - Class definition
++class PinterestLayout: UICollectionViewLayout {
++    
++    // MARK: - Properties
++    
++    // Keep reference to the delegate
++    var delegate: PinterestLayoutDelegate!
++    
++    // Configure number of columns and cell padding
++    var numberOfColumns = 2
++    var cellPadding: CGFloat = 6.0
++    
++    // This is an array to cache the calculated attributes.
++    
++    /* When you call prepareLayout(), you’ll calculate the attributes for all items and add them to the cache. When the collection view later requests the layout attributes, you can be efficient and query the cache instead of recalculating them every time
++     */
++    
++    private var cache = [PinterestLayoutAttributes]()
++    
++    // This declares two properties to store the content size.
++    // contentHeight is incremented as photos are added
++    private var contentHeight: CGFloat  = 0.0
++    
++    // contentWidth is calculated based on the collection view width and its content inset.
++    private var contentWidth: CGFloat {
++        let insets = collectionView!.contentInset
++        return collectionView!.bounds.width - (insets.left + insets.right)
++    }
++    
++    // Variable overrides
++    
++    /* This overrides collectionViewContentSize variable of the abstract parent class, and returns the size of the collection view’s contents. To do this, you use both contentWidth and contentHeight calculated in the previous steps.
++     */
++    
++    override var collectionViewContentSize: CGSize {
++        return CGSize(width: contentWidth, height: contentHeight)
++    }
++    
++    /* This overrides layoutAttributesClass variable to tell the collection view to use PinterestLayoutAttributes whenever it creates layout attributes objects.
++     */
++    
++    override class var layoutAttributesClass: AnyClass {
++        return PinterestLayoutAttributes.self
++    }
++    
++    // MARK: - Overrides
++    
++    override func prepare() {
++        
++        // Only calculate if cache is empty
++        if cache.isEmpty {
++            
++            /*  This declares and fills the xOffset array with the x-coordinate for every column based on the column widths.
++             */
++            let columnWidth = contentWidth / CGFloat(numberOfColumns)
++            
++            var xOffset = [CGFloat]()
++            
++            for column in 0 ..< numberOfColumns {
++                xOffset.append(CGFloat(column) * columnWidth )
++            }
++            
++            /*  The yOffset array tracks the y-position for every column. You initialize each value in yOffset to 0, since this is the offset of the first item in each column.
++             */
++            var column = 0
++            var yOffset = [CGFloat](repeating: 0, count: numberOfColumns)
++            
++            // This loops through all the items in the first section, as this particular
++            // layout has only one section
++            for item in 0 ..< collectionView!.numberOfItems(inSection: 0) {
++                
++                let indexPath = NSIndexPath(item: item, section: 0)
++                
++                // This is where you perform the frame calculation
++                // Width is the previously calculated cellWidth, with the padding between cells removed
++                let width = columnWidth - cellPadding * 2
++                
++                // You ask the delegate for the height of the image
++                let photoHeight = delegate.collectionView(collectionView!,
++                                                          heightForPhotoAtIndexPath: indexPath,
++                                                          withWidth:width)
++                
++                // You ask the delegate for the height of the annotation
++                let annotationHeight = delegate.collectionView(collectionView!,
++                                                               heightForAnnotationAtIndexPath: indexPath,
++                                                               withWidth: width)
++                
++                // Calculate the frame height based on those heights and the predefined cellPadding
++                // for the top and bottom
++                let height = cellPadding +  photoHeight + annotationHeight + cellPadding
++                
++                // Combine this with the x and y offsets of the current column to create the
++                // insetFrame used by the attribute
++                let frame = CGRect(x: xOffset[column], y: yOffset[column], width: columnWidth, height: height)
++                let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
++                
++                // This creates an instance of PinterestLayoutAttributes
++                let attributes = PinterestLayoutAttributes(forCellWith: indexPath as IndexPath)
++                attributes.photoHeight = photoHeight
++                
++                // Sets its frame using insetFrame
++                attributes.frame = insetFrame
++                
++                // Append the attributes to cache
++                cache.append(attributes)
++                
++                // This expands contentHeight to account for the frame of the newly calculated item
++                contentHeight = max(contentHeight, frame.maxY)
++                
++                // It then advances the yOffset for the current column based on the frame
++                yOffset[column] = yOffset[column] + height
++                
++                // Finally, it advances the column so that the next item will be placed in the next column.
++                if column >= numberOfColumns - 1 {
++                    column = 0
++                } else {
++                    column = column + 1
++                }
++                
++            }
++        }
++    }
++    
++    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
++        
++        var layoutAttributes = [UICollectionViewLayoutAttributes]()
++        
++        //  Iterate through the attributes in cache and check if their frames intersect with rect
++        for attributes in cache {
++            if attributes.frame.intersects(rect) {
++                layoutAttributes.append(attributes) // Add in any attributes for display
++            }
++        }
++        return layoutAttributes
++    }
++    
++}
++
+diff --git a/FlowerShopping/FlowerShopping/Photo.swift b/FlowerShopping/FlowerShopping/Photo.swift
+new file mode 100644
+index 0000000..168d315
+--- /dev/null
++++ b/FlowerShopping/FlowerShopping/Photo.swift
+@@ -0,0 +1,50 @@
++//
++//  Photo.swift
++//  FlowerShopping
++//
++//  Created by DUONG PHAM on 5/25/17.
++//  Copyright © 2017 DUONGPHAM. All rights reserved.
++//
++
++import UIKit
++
++class Photo {
++    
++    class func allPhotos() -> [Photo] {
++        var photos = [Photo]()
++        if let URL = Bundle.main.url(forResource: "Photos", withExtension: "plist") {
++            if let photosFromPlist = NSArray(contentsOf: URL) {
++                for dictionary in photosFromPlist {
++                    let photo = Photo(dictionary: dictionary as! NSDictionary)
++                    photos.append(photo)
++                }
++            }
++        }
++        return photos
++    }
++    
++    var caption: String
++    var comment: String
++    var image: UIImage
++    
++    init(caption: String, comment: String, image: UIImage) {
++        self.caption = caption
++        self.comment = comment
++        self.image = image
++    }
++    
++    convenience init(dictionary: NSDictionary) {
++        let caption = dictionary["Caption"] as? String
++        let comment = dictionary["Comment"] as? String
++        let photo = dictionary["Photo"] as? String
++        let image = UIImage(named: photo!)?.decompressedImage
++        self.init(caption: caption!, comment: comment!, image: image!)
++    }
++    
++    func heightForComment(_ font: UIFont, width: CGFloat) -> CGFloat {
++        let rect = NSString(string: comment).boundingRect(with: CGSize(width: width, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
++        return ceil(rect.height)
++    }
++    
++}
++
+diff --git a/FlowerShopping/FlowerShopping/PhotoStreamViewController.swift b/FlowerShopping/FlowerShopping/PhotoStreamViewController.swift
+new file mode 100644
+index 0000000..aa4357e
+--- /dev/null
++++ b/FlowerShopping/FlowerShopping/PhotoStreamViewController.swift
+@@ -0,0 +1,157 @@
++//
++//  PhotoStreamViewController.swift
++//  FlowerShopping
++//
++//  Created by DUONG PHAM on 5/25/17.
++//  Copyright © 2017 DUONGPHAM. All rights reserved.
++//
++
++import UIKit
++import AVFoundation
++import Moltin
++
++class PhotoStreamViewController: UICollectionViewController {
++    
++    var collectionId:String?
++    fileprivate let PAGINATION_LIMIT:Int = 3
++    fileprivate var paginationOffset:Int = 0
++    fileprivate var products:NSMutableArray = NSMutableArray()
++    fileprivate var showLoadMore:Bool = true
++    
++    //var photos = Photo.allPhotos()
++    
++    override var preferredStatusBarStyle : UIStatusBarStyle {
++        return UIStatusBarStyle.lightContent
++    }
++    
++    override func viewDidLoad() {
++        super.viewDidLoad()
++        
++        // Set controller as delegate for layout
++        if let layout = collectionView?.collectionViewLayout as? PinterestLayout {
++            layout.delegate = self
++        }
++        
++        if let patternImage = UIImage(named: "Pattern") {
++            view.backgroundColor = UIColor(patternImage: patternImage)
++        }
++        
++        collectionView!.backgroundColor = UIColor.clear
++        collectionView!.contentInset = UIEdgeInsets(top: 23, left: 5, bottom: 10, right: 5)
++        
++        loadProducts(true)
++    }
++    
++    // Added by load product
++    fileprivate func loadProducts(_ showLoadingAnimation: Bool){
++        assert(collectionId != nil, "Collection ID is required!")
++        
++        // Load in the next set of products...
++        
++        // Show loading if neccesary?
++        if showLoadingAnimation {
++            SwiftSpinner.show("Loading products")
++        }
++        
++        
++        Moltin.sharedInstance().product.listing(withParameters: ["collection": collectionId!, "limit": NSNumber(value: PAGINATION_LIMIT), "offset": paginationOffset], success: { (response) -> Void in
++            // Let's use this response!
++            SwiftSpinner.hide()
++            
++            
++            if let newProducts:NSArray = response?["result"] as? NSArray {
++                self.products.addObjects(from: newProducts as [AnyObject])
++                
++            }
++            
++            
++            let responseDictionary = NSDictionary(dictionary: response!)
++            
++            //if let newOffset:NSNumber = responseDictionary.value(forKeyPath: "pagination.offsets.next") as? NSNumber {
++            //   self.paginationOffset = newOffset.intValue
++            
++            //}
++            
++            if let totalProducts:NSNumber = responseDictionary.value(forKeyPath: "pagination.total") as? NSNumber {
++                // If we have all the products already, don't show the 'load more' button!
++                if totalProducts.intValue >= self.products.count {
++                    self.showLoadMore = false
++                }
++                
++            }
++            
++            self.collectionView?.reloadData()
++            
++        }) { (response, error) -> Void in
++            // Something went wrong!
++            SwiftSpinner.hide()
++            
++            AlertDialog.showAlert("Error", message: "Couldn't load products", viewController: self)
++            
++            print("Something went wrong...")
++            print(error)
++        }
++        
++    }
++
++    
++}
++
++extension PhotoStreamViewController {
++    
++    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
++        return products.count
++    }
++    
++    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
++        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AnnotatedPhotoCell", for: indexPath) as! AnnotatedPhotoCell
++        
++        let row = (indexPath as NSIndexPath).row
++
++        let product:NSDictionary = products.object(at: row) as! NSDictionary
++        
++        cell.configureWithProduct(product)
++        
++        //cell.photo = photos[indexPath.item]
++        return cell
++    }
++    
++}
++
++extension PhotoStreamViewController : PinterestLayoutDelegate {
++    
++    // This provides the height of the photos
++    
++    /* It uses AVMakeRectWithAspectRatioInsideRect() from AVFoundation to calculate a height that retains the photo’s aspect ratio, restricted to the cell’s width.
++     */
++    
++    func collectionView(_ collectionView:UICollectionView,
++                        heightForPhotoAtIndexPath indexPath: NSIndexPath,
++                        withWidth width: CGFloat) -> CGFloat {
++        
++        
++        //let photo = photos[indexPath.item]
++        let boundingRect =  CGRect(x: 0, y: 0, width: width, height: CGFloat(MAXFLOAT))
++        let rect  = AVMakeRect(aspectRatio: photo.image.size, insideRect: boundingRect)
++        
++        return rect.size.height
++    }
++    
++    // This calculates the height of the photo’s comment based on the given font and the cell’s width
++    func collectionView(_ collectionView: UICollectionView,
++                        heightForAnnotationAtIndexPath indexPath: NSIndexPath,
++                        withWidth width: CGFloat) -> CGFloat {
++        
++        let annotationPadding = CGFloat(4)
++        let annotationHeaderHeight = CGFloat(17)
++        let photo = photos[indexPath.item]
++        let font = UIFont(name: "AvenirNext-Regular", size: 10)!
++        let commentHeight = photo.heightForComment(font, width: width)
++        
++        /* You then add that height to a hard-coded annotationPadding value for the top and bottom, as well as a hard-coded annotationHeaderHeight that accounts for the size of the annotation title.
++         */
++        let height = annotationPadding + annotationHeaderHeight + commentHeight + annotationPadding
++        
++        return height
++    }
++}
+diff --git a/FlowerShopping/FlowerShopping/RoundedCornersView.swift b/FlowerShopping/FlowerShopping/RoundedCornersView.swift
+new file mode 100644
+index 0000000..a291ba7
+--- /dev/null
++++ b/FlowerShopping/FlowerShopping/RoundedCornersView.swift
+@@ -0,0 +1,21 @@
++//
++//  RoundedCornersView.swift
++//  FlowerShopping
++//
++//  Created by DUONG PHAM on 5/25/17.
++//  Copyright © 2017 DUONGPHAM. All rights reserved.
++//
++
++import UIKit
++
++@IBDesignable
++class RoundedCornersView: UIView {
++    
++    @IBInspectable var cornerRadius: CGFloat = 0 {
++        didSet {
++            layer.cornerRadius = cornerRadius
++            layer.masksToBounds = cornerRadius > 0
++        }
++    }
++    
++}
+diff --git a/FlowerShopping/FlowerShopping/UIImage+Decompression.swift b/FlowerShopping/FlowerShopping/UIImage+Decompression.swift
+new file mode 100644
+index 0000000..8e994dd
+--- /dev/null
++++ b/FlowerShopping/FlowerShopping/UIImage+Decompression.swift
+@@ -0,0 +1,21 @@
++//
++//  UIImage+Decompression.swift
++//  FlowerShopping
++//
++//  Created by DUONG PHAM on 5/25/17.
++//  Copyright © 2017 DUONGPHAM. All rights reserved.
++//
++
++import UIKit
++
++extension UIImage {
++    
++    var decompressedImage: UIImage {
++        UIGraphicsBeginImageContextWithOptions(size, true, 0)
++        draw(at: CGPoint.zero)
++        let decompressedImage = UIGraphicsGetImageFromCurrentImageContext()
++        UIGraphicsEndImageContext()
++        return decompressedImage!
++    }
++    
++}
+-- 
+2.10.1 (Apple Git-78)
+
