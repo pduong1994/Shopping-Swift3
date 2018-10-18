@@ -1,4 +1,4 @@
-# Shopping-Swift3
+# Ứng dụng bán hàng | Sales app Swift 3
 
 This is a simple iOS app that demonstrates the functionality of a shopping.
 
